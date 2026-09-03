@@ -267,6 +267,128 @@ table.k td{padding:7px 9px;border:1px solid var(--line-soft);vertical-align:top}
 #map .node rect:first-child{transition:fill .15s ease}
 #map .node:active rect:first-child{fill:rgba(201,162,39,.3)}
 #map .tog:active circle:nth-child(2){fill:#6A1524}
+
+/* ============================================================
+   AI — thanh trạng thái, bảng cài đặt, markdown, suy luận
+   ============================================================ */
+.aibar{display:flex;align-items:center;gap:8px;padding:10px 16px 0;flex-wrap:wrap;flex:0 0 auto}
+.aisw{
+  display:inline-flex;align-items:center;gap:7px;padding:6px 12px 6px 8px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(0,0,0,.22);color:var(--nacre);
+  font-size:12px;cursor:pointer;transition:.18s;
+}
+.aisw:hover{color:var(--gold-lit)}
+.aisw .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:0 0 8px;transition:.18s}
+.aisw.on{border-color:rgba(127,178,160,.55);color:var(--jade);background:rgba(127,178,160,.1)}
+.aisw.on .dot{background:var(--jade);box-shadow:0 0 8px rgba(127,178,160,.7)}
+.aisw.off .dot{background:var(--muted)}
+.aimeta{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.aicog{
+  border:1px solid var(--line);background:transparent;color:var(--muted);
+  width:30px;height:30px;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 30px;
+}
+.aicog:hover{color:var(--gold-lit);border-color:var(--gold)}
+.aicog svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---- Bảng cài đặt ---- */
+.sheetwrap{position:fixed;inset:0;z-index:200;display:none}
+.sheetwrap.on{display:block}
+.sheetbg{position:absolute;inset:0;background:rgba(20,4,9,.72);backdrop-filter:blur(4px)}
+.sheet{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(560px,calc(100vw - 28px));max-height:min(88dvh,860px);overflow:auto;
+  background:linear-gradient(180deg,#4E1120,#420E1A);
+  border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);
+  padding:22px 22px calc(22px + env(safe-area-inset-bottom));
+}
+.sheet h2{font-family:var(--serif);font-size:26px;margin:0 0 4px;color:var(--parchment);font-weight:600}
+.sheet h2 em{font-style:normal;color:var(--gold-lit)}
+.sheet .dek{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0 0 18px}
+.sheet .close{
+  position:absolute;right:16px;top:16px;width:32px;height:32px;border-radius:10px;
+  border:1px solid var(--line);background:transparent;color:var(--muted);font-size:15px;cursor:pointer;line-height:1;
+}
+.sheet .close:hover{color:var(--gold-lit)}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--gold-lit);margin-bottom:6px}
+.fld .note{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.55}
+.fld input,.fld select{
+  width:100%;padding:11px 12px;border-radius:11px;border:1px solid var(--line);
+  background:rgba(0,0,0,.3);font-size:13.5px;color:var(--parchment);
+}
+.fld select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.fld select option{background:#4E1120;color:var(--parchment)}
+.fld input::placeholder{color:rgba(183,154,147,.65)}
+.keyrow{display:flex;gap:8px}
+.keyrow input{flex:1;min-width:0}
+.keyrow button{
+  flex:0 0 auto;padding:0 13px;border-radius:11px;border:1px solid var(--line);
+  background:transparent;color:var(--muted);font-size:12px;cursor:pointer;
+}
+.keyrow button:hover{color:var(--gold-lit)}
+.sheetfoot{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.sheetfoot .btn{flex:0 0 auto}
+.sheetmsg{font-size:12.5px;line-height:1.6;margin-top:12px;padding:11px 13px;border-radius:11px;display:none}
+.sheetmsg.on{display:block}
+.sheetmsg.ok{background:rgba(127,178,160,.13);border:1px solid rgba(127,178,160,.45);color:var(--jade)}
+.sheetmsg.err{background:rgba(208,142,134,.13);border:1px solid rgba(208,142,134,.45);color:var(--rose)}
+.sheetmsg.wait{background:rgba(201,162,39,.11);border:1px solid var(--line);color:var(--nacre)}
+.safebox{
+  font-size:11.5px;line-height:1.65;color:var(--muted);background:rgba(0,0,0,.22);
+  border:1px solid var(--line-soft);border-left:2px solid var(--gold);border-radius:0 11px 11px 0;padding:11px 13px;margin-top:6px;
+}
+.safebox b{color:var(--gold-lit);font-weight:600}
+
+/* ---- Markdown trong bong bóng trả lời ---- */
+.msg.md{white-space:normal}
+.msg.md>*:first-child{margin-top:0}
+.msg.md>*:last-child{margin-bottom:0}
+.msg.md p{margin:0 0 9px}
+.msg.md h3,.msg.md h4{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--gold-lit);margin:15px 0 7px;letter-spacing:.01em}
+.msg.md h4{font-size:15px}
+.msg.md ul,.msg.md ol{margin:0 0 9px;padding-left:20px}
+.msg.md li{margin:0 0 5px}
+.msg.md li::marker{color:var(--gold)}
+.msg.md b,.msg.md strong{color:var(--gold-lit);font-weight:600}
+.msg.md em{color:var(--nacre);font-style:italic}
+.msg.md code{background:rgba(0,0,0,.32);border:1px solid var(--line-soft);border-radius:5px;padding:1px 5px;font-size:12.5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.msg.md pre{background:rgba(0,0,0,.32);border:1px solid var(--line-soft);border-radius:10px;padding:11px 13px;overflow-x:auto;margin:0 0 9px}
+.msg.md pre code{background:none;border:0;padding:0}
+.msg.md blockquote{margin:0 0 9px;padding:2px 0 2px 12px;border-left:2px solid var(--gold);color:var(--nacre)}
+.msg.md hr{border:0;border-top:1px solid var(--line);margin:13px 0}
+.msg.md .tw{overflow-x:auto;margin:0 0 10px;-webkit-overflow-scrolling:touch}
+.msg.md table{border-collapse:collapse;font-size:12.5px;min-width:100%}
+.msg.md th,.msg.md td{border:1px solid var(--line-soft);padding:7px 10px;text-align:left;vertical-align:top}
+.msg.md th{background:rgba(201,162,39,.13);color:var(--gold-lit);font-weight:600;white-space:nowrap}
+
+/* ---- Khối suy luận gập lại ---- */
+.think{margin:0 0 10px;border:1px dashed var(--line);border-radius:11px;overflow:hidden;background:rgba(0,0,0,.18)}
+.think>summary{
+  cursor:pointer;list-style:none;padding:8px 12px;font-size:11.5px;color:var(--muted);
+  display:flex;align-items:center;gap:7px;user-select:none;
+}
+.think>summary::-webkit-details-marker{display:none}
+.think>summary::before{content:"▸";color:var(--gold);transition:transform .18s;display:inline-block}
+.think[open]>summary::before{transform:rotate(90deg)}
+.think>summary:hover{color:var(--gold-lit)}
+.think .tbody{padding:0 12px 11px;font-size:12.5px;line-height:1.65;color:var(--muted);white-space:pre-wrap;max-height:260px;overflow:auto}
+
+/* ---- Chân bong bóng: nguồn, chi phí ---- */
+.aifoot{margin-top:11px;padding-top:9px;border-top:1px solid var(--line-soft);font-size:11px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.aifoot .tag{display:inline-flex;align-items:center;gap:5px}
+.cursorblink{display:inline-block;width:7px;height:14px;background:var(--gold);vertical-align:-2px;animation:cb 1s steps(2) infinite;margin-left:1px}
+@keyframes cb{0%,49%{opacity:1}50%,100%{opacity:0}}
+.send.stop{background:var(--rose);color:#3A0C15}
+
+@media (max-width:760px){
+  .sheet{
+    left:0;right:0;bottom:0;top:auto;transform:none;width:100%;
+    max-height:92dvh;border-radius:20px 20px 0 0;border-left:0;border-right:0;border-bottom:0;
+    padding:20px 16px calc(20px + env(safe-area-inset-bottom));
+  }
+  .aimeta{width:100%;margin-left:0;text-align:left}
+  .msg{max-width:94%}
+}
 </style>
 </head>
 <body>
@@ -330,8 +452,13 @@ table.k td{padding:7px 9px;border:1px solid var(--line-soft);vertical-align:top}
 
     <!-- ============ CHAT ============ -->
     <section class="view" id="v-chat">
-      <header class="top"><div><h1>Hỏi đáp với <em>trợ giảng</em></h1><div class="sub">Tra thẳng trong 73 mục của bản đồ — chạy offline, không cần mạng</div></div></header>
+      <header class="top"><div><h1>Hỏi đáp với <em>trợ giảng</em></h1><div class="sub" id="sub1">Tra thẳng trong 73 mục của bản đồ — chạy offline, không cần mạng</div></div></header>
       <div class="chatview">
+        <div class="aibar">
+          <button class="aisw off" id="aisw1" type="button"><span class="dot"></span><span class="lbl">Trợ giảng AI</span></button>
+          <button class="aicog" id="aicog1" type="button" aria-label="Cài đặt AI"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 9 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 9a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg></button>
+          <div class="aimeta" id="aimeta1"></div>
+        </div>
         <div class="modebar">
           <button class="mode on" data-mode="hoc">Học &amp; giải thích</button>
           <button class="mode" data-mode="kiemtra">Kiểm tra tôi</button>
@@ -348,8 +475,13 @@ table.k td{padding:7px 9px;border:1px solid var(--line-soft);vertical-align:top}
 
     <!-- ============ APPLY ============ -->
     <section class="view" id="v-apply">
-      <header class="top"><div><h1>Ứng dụng vào <em>Light Team</em></h1><div class="sub">Mô tả tình huống, bản đồ chỉ ra khung soi và việc làm được — chạy offline</div></div></header>
+      <header class="top"><div><h1>Ứng dụng vào <em>Light Team</em></h1><div class="sub" id="sub2">Mô tả tình huống, bản đồ chỉ ra khung soi và việc làm được — chạy offline</div></div></header>
       <div class="chatview">
+        <div class="aibar">
+          <button class="aisw off" id="aisw2" type="button"><span class="dot"></span><span class="lbl">Trợ giảng AI</span></button>
+          <button class="aicog" id="aicog2" type="button" aria-label="Cài đặt AI"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 9 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 9a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg></button>
+          <div class="aimeta" id="aimeta2"></div>
+        </div>
         <div class="thread" id="thread2"></div>
         <div class="chips" id="chips2"></div>
         <div class="composer">
@@ -372,6 +504,55 @@ table.k td{padding:7px 9px;border:1px solid var(--line-soft);vertical-align:top}
     </section>
 
   </main>
+</div>
+
+<!-- ============ BẢNG CÀI ĐẶT TRỢ GIẢNG AI ============ -->
+<div class="sheetwrap" id="aisheet" role="dialog" aria-modal="true" aria-labelledby="ai-h">
+  <div class="sheetbg" id="ai-bg"></div>
+  <div class="sheet">
+    <button class="close" id="ai-close" aria-label="Đóng">✕</button>
+    <h2 id="ai-h">Trợ giảng <em>AI</em></h2>
+    <p class="dek">Gắn key API để bản đồ suy luận thật: phân tích tình huống, so sánh khung, soi vào một người cụ thể của Light Team. Chưa gắn key, bản đồ vẫn tra cứu offline như cũ.</p>
+
+    <div class="fld">
+      <label for="ai-key">API key</label>
+      <div class="keyrow">
+        <input id="ai-key" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="sk-...">
+        <button type="button" id="ai-eye">Hiện</button>
+      </div>
+      <div class="safebox" id="ai-safe">
+        <b>Key nằm trong máy này, không lên mạng.</b> Key được lưu ở bộ nhớ trình duyệt của riêng thiết bị anh đang cầm, không nằm trong file trên GitHub và không ai mở link thấy được. Anh nhập một lần trên iPhone, một lần trên Mac. Xoá bất cứ lúc nào bằng nút bên dưới.
+      </div>
+    </div>
+
+    <div class="fld">
+      <label for="ai-model">Model</label>
+      <select id="ai-model"></select>
+      <div class="note" id="ai-modelnote">deepseek-v4-pro suy luận sâu, hợp phân tích tình huống đội ngũ. deepseek-v4-flash nhanh và rẻ hơn, hợp tra cứu nhanh.</div>
+    </div>
+
+    <div class="fld">
+      <label for="ai-base">Máy chủ API</label>
+      <input id="ai-base" type="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="https://api.deepseek.com">
+      <div class="note">Mặc định gọi thẳng DeepSeek. Sau này nếu mở cho cả Light Team dùng chung, anh dán link proxy Cloudflare Worker vào đây - key sẽ nằm ở server, người dùng không cần nhập key.</div>
+    </div>
+
+    <div class="fld">
+      <label for="ai-len">Độ dài trả lời</label>
+      <select id="ai-len">
+        <option value="3000">Ngắn - khoảng 250 chữ</option>
+        <option value="6000">Vừa - khoảng 500 chữ</option>
+        <option value="10000">Dài - phân tích kỹ</option>
+      </select>
+    </div>
+
+    <div class="sheetmsg" id="ai-msg"></div>
+
+    <div class="sheetfoot">
+      <button class="btn solid" id="ai-test">Lưu &amp; kiểm tra kết nối</button>
+      <button class="btn" id="ai-clear">Về mặc định</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1351,9 +1532,11 @@ document.getElementById("d-mark").onclick=()=>{
 };
 document.getElementById("d-ask").onclick=()=>{
  if(!currentNode)return;
+ const q=`Giải thích sâu hơn mục “${currentNode.t}”, cho ví dụ trong bối cảnh một đội môi giới bất động sản và chỉ ra mục này nối với phần nào của các buổi khác.`;
  go("chat");
- document.getElementById("input").value=`Giải thích sâu hơn mục “${currentNode.t}”, cho ví dụ trong bối cảnh một đội môi giới bất động sản và chỉ ra mục này nối với phần nào của các buổi khác.`;
- document.getElementById("input").focus();
+ drawer.classList.remove("on");
+ if(typeof chat1!=="undefined"&&chat1.ask)chat1.ask(q);
+ else{document.getElementById("input").value=q;document.getElementById("input").focus()}
 };
 function expandTo(id){
  // mở tất cả tổ tiên
@@ -1390,12 +1573,12 @@ document.getElementById("legend").innerHTML=ALL.map(s=>`<i><b style="background:
 function buildKB(){
  let out=[];
  ALL.forEach(s=>{
-  out.push("### "+s.t+(s.sub?" — "+s.sub:""));
+  out.push("### "+s.t+" ["+s.id+"]"+(s.sub?" — "+s.sub:""));
   if(s.detail&&s.detail.sum)out.push(s.detail.sum);
   (s.parts||[]).forEach(p=>{
-   out.push("#### "+p.t);
+   out.push("#### "+p.t+" ["+p.id+"]");
    (p.nodes||[]).forEach(n=>{
-    out.push("- **"+n.t+"**: "+(n.sum||""));
+    out.push("- **"+n.t+"** ["+n.id+"]: "+(n.sum||""));
     if(n.pts)out.push("  "+n.pts.join(" | "));
     if(n.tbl)out.push("  BẢNG: "+n.tbl.h.join(" / ")+" >> "+n.tbl.r.map(r=>r.join(" / ")).join(" ; "));
     if(n.pts2)out.push("  "+n.pts2.join(" | "));
@@ -1638,31 +1821,421 @@ function kbBind(el){
  }});
 }
 
+/* ============================================================
+   4c. TRỢ GIẢNG AI — gọi API thật, có suy luận, chạy được cả
+       trên iPhone lẫn máy tính. Key nằm trong máy, không lên repo.
+   ============================================================ */
+
+/* ---- 4c.1 Cấu hình, lưu trong máy ---- */
+var AICFG_KEY="lm2026:ai";
+
+/* ==================================================================
+   >>> DAN KEY CUA ANH VAO GIUA HAI DAU NHAY O DONG NGAY DUOI <<<
+
+   Dan xong, luu file, day len GitHub. Mo link la chay ngay tren moi
+   may, khong phai nhap gi nua.
+
+   BIET RO TRUOC KHI DAN: file nay cong khai tren GitHub Pages. Ai mo
+   link roi bam xem ma nguon la doc duoc key o dong duoi. Co bot quet
+   GitHub tim key, thuong phat hien trong vai phut toi vai gio. Khong
+   co cach nao giau key trong mot trang tinh - ma hoa kieu gi trinh
+   duyet cung phai khoi phuc lai de goi API.
+
+   Vi vay: giu so du thap, dat han muc chi tieu o trang DeepSeek, va
+   canh so du. Thay tut bat thuong thi thu hoi key, tao key moi, sua
+   lai dung dong nay roi day len. Khong phai sua cho nao khac.
+
+   De trong dong nay thi ban do chay tra cuu offline nhu cu, va ai
+   muon dung AI thi tu dan key rieng vao bang cai dat tren may ho.
+   ================================================================== */
+var AI_KEY_SAN="";
+
+var AI_DEF={base:"https://api.deepseek.com",model:"deepseek-v4-pro",key:AI_KEY_SAN,on:true,maxtok:6000};
+var AI_MODELS=[
+ {id:"deepseek-v4-pro",   t:"deepseek-v4-pro — suy luận sâu (khuyên dùng)"},
+ {id:"deepseek-v4-flash", t:"deepseek-v4-flash — nhanh, rẻ hơn"}
+];
+var AI=Object.assign({},AI_DEF);
+
+function aiLoad(){
+ try{var r=localStorage.getItem(AICFG_KEY);if(r)AI=Object.assign({},AI_DEF,JSON.parse(r))}catch(e){}
+ if(!AI.base)AI.base=AI_DEF.base;
+ if(!AI.model)AI.model=AI_DEF.model;
+ if(!AI.key)AI.key=AI_KEY_SAN;   /* chua dat key rieng thi chay key gan trong file */
+}
+function aiSave(){try{localStorage.setItem(AICFG_KEY,JSON.stringify(AI))}catch(e){warnNoStore()}}
+function aiHasKey(){return !!(AI.key&&AI.key.length>8)}
+function aiOn(){return !!(AI.on&&aiHasKey())}
+function aiURL(p){return String(AI.base||AI_DEF.base).replace(/\/+$/,"")+p}
+
+/* ---- 4c.2 Lỗi nói bằng tiếng Việt, không nói bằng mã số ---- */
+function aiErrText(st,body){
+ var d="";try{var j=JSON.parse(body);d=(j.error&&(j.error.message||j.error.type))||j.message||""}catch(e){d=String(body||"").slice(0,180)}
+ if(st===401)return "Key không được chấp nhận. Anh mở phần cài đặt (bánh răng) dán lại key, chú ý không dính dấu cách ở đầu hoặc cuối.";
+ if(st===402)return "Tài khoản API đã hết số dư. Anh nạp thêm ở trang quản lý của DeepSeek rồi hỏi lại.";
+ if(st===403)return "Key không có quyền gọi model này. Anh thử đổi sang deepseek-v4-flash trong cài đặt.";
+ if(st===404)return "Không tìm thấy model \""+AI.model+"\". Anh mở cài đặt, bấm Lưu & kiểm tra kết nối để em nạp lại danh sách model đang có.";
+ if(st===422||st===400)return "Máy chủ từ chối yêu cầu"+(d?" ("+d+")":"")+". Anh thử hỏi lại bằng câu ngắn hơn.";
+ if(st===429)return "Máy chủ đang quá tải hoặc anh gửi quá nhanh. Anh chờ khoảng một phút rồi hỏi lại.";
+ if(st>=500)return "Máy chủ đang lỗi. Anh chờ một lát rồi hỏi lại.";
+ return "Không gọi được máy chủ"+(d?" ("+d+")":"")+".";
+}
+
+/* ---- 4c.3 Bộ dựng markdown, an toàn với HTML ---- */
+function _esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function _inline(s){
+ return s
+  .replace(/`([^`]+)`/g,function(m,a){return "<code>"+a+"</code>"})
+  .replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>")
+  .replace(/__([^_]+)__/g,"<b>$1</b>")
+  .replace(/(^|[\s(])\*([^*\n]+)\*(?=[\s).,;:!?]|$)/g,"$1<em>$2</em>");
+}
+function mdHTML(src){
+ var t=_esc(String(src==null?"":src)).replace(/\r/g,"");
+ var lines=t.split("\n"),out=[],i=0;
+ function isTblSep(s){return /^\s*\|?[\s:|-]*-[\s:|-]*\|?\s*$/.test(s)&&s.indexOf("|")>=0}
+ function cells(s){var r=s.trim().replace(/^\|/,"").replace(/\|$/,"").split("|");return r.map(function(x){return _inline(x.trim())})}
+ while(i<lines.length){
+  var L=lines[i];
+  if(/^\s*```/.test(L)){
+   var buf=[];i++;
+   while(i<lines.length&&!/^\s*```/.test(lines[i])){buf.push(lines[i]);i++}
+   i++;out.push("<pre><code>"+buf.join("\n")+"</code></pre>");continue;
+  }
+  if(L.indexOf("|")>=0&&i+1<lines.length&&isTblSep(lines[i+1])){
+   var head=cells(L),rows=[];i+=2;
+   while(i<lines.length&&lines[i].indexOf("|")>=0&&lines[i].trim()!==""){rows.push(cells(lines[i]));i++}
+   var h="<div class=\"tw\"><table><thead><tr>"+head.map(function(c){return "<th>"+c+"</th>"}).join("")+"</tr></thead><tbody>";
+   rows.forEach(function(r){h+="<tr>"+r.map(function(c){return "<td>"+c+"</td>"}).join("")+"</tr>"});
+   out.push(h+"</tbody></table></div>");continue;
+  }
+  if(/^\s{0,3}#{1,6}\s+/.test(L)){
+   var lv=(L.match(/^\s{0,3}(#{1,6})/)[1].length<=3)?"h3":"h4";
+   out.push("<"+lv+">"+_inline(L.replace(/^\s{0,3}#{1,6}\s+/,"").replace(/\s*#+\s*$/,""))+"</"+lv+">");i++;continue;
+  }
+  if(/^\s{0,3}(---|\*\*\*|___)\s*$/.test(L)){out.push("<hr>");i++;continue}
+  if(/^\s{0,3}&gt;\s?/.test(L)){
+   var q=[];
+   while(i<lines.length&&/^\s{0,3}&gt;\s?/.test(lines[i])){q.push(lines[i].replace(/^\s{0,3}&gt;\s?/,""));i++}
+   out.push("<blockquote>"+_inline(q.join(" "))+"</blockquote>");continue;
+  }
+  if(/^\s{0,3}([-*•+])\s+/.test(L)){
+   var ul=[];
+   while(i<lines.length&&/^\s{0,3}([-*•+])\s+/.test(lines[i])){ul.push("<li>"+_inline(lines[i].replace(/^\s{0,3}([-*•+])\s+/,""))+"</li>");i++}
+   out.push("<ul>"+ul.join("")+"</ul>");continue;
+  }
+  if(/^\s{0,3}\d+[.)]\s+/.test(L)){
+   var ol=[];
+   while(i<lines.length&&/^\s{0,3}\d+[.)]\s+/.test(lines[i])){ol.push("<li>"+_inline(lines[i].replace(/^\s{0,3}\d+[.)]\s+/,""))+"</li>");i++}
+   out.push("<ol>"+ol.join("")+"</ol>");continue;
+  }
+  if(L.trim()===""){i++;continue}
+  var par=[];
+  while(i<lines.length&&lines[i].trim()!==""&&!/^\s{0,3}(#{1,6}\s|[-*•+]\s|\d+[.)]\s|&gt;|```|---\s*$)/.test(lines[i])&&!(lines[i].indexOf("|")>=0&&i+1<lines.length&&isTblSep(lines[i+1]))){par.push(lines[i]);i++}
+  if(par.length)out.push("<p>"+_inline(par.join("\n")).replace(/\n/g,"<br>")+"</p>");
+ }
+ return out.join("");
+}
+
+/* ---- 4c.4 Chỉ dẫn cố định — phải bất biến để máy chủ đọc lại từ bộ nhớ đệm ---- */
+var SYS_AI=SYS_BASE+`
+
+Cách xưng hô và cách viết:
+- Gọi người học là "anh", tự xưng "em". Câu ngắn, đi thẳng vào việc làm được.
+- Dùng markdown: đề mục ###, gạch đầu dòng, in đậm ý chính, bảng khi so sánh từ ba mục trở lên.
+- Dùng dấu câu thường: gạch ngang -, mũi tên ->, ba chấm ...
+- Không bịa số. Số nào không có trong tài liệu thì nói rõ là chưa có trong khoá.
+
+Trích nguồn (bắt buộc):
+Mỗi mục trong tài liệu có một mã trong ngoặc vuông, ví dụ [n-bani].
+Kết thúc mọi câu trả lời bằng đúng một dòng cuối cùng, không có gì phía sau:
+NGUON: ma1, ma2, ma3
+Liệt kê tối đa 4 mã mục mà câu trả lời thật sự dựa vào. Nếu không dựa vào mục nào, ghi: NGUON: khong`;
+
+var MODE_HINT={
+ hoc:"Chế độ GIẢI THÍCH. Giải thích rõ ràng, chốt lại bằng một ví dụ thật trong nghề môi giới bất động sản ở TP.HCM.",
+ kiemtra:"Chế độ KIỂM TRA. Nếu lượt trước em chưa hỏi thì đặt đúng MỘT câu hỏi cho anh rồi dừng, chờ anh trả lời. Nếu anh vừa trả lời thì nhận xét đúng ở đâu, thiếu ở đâu, bổ sung ngắn rồi hỏi câu tiếp theo.",
+ lienket:"Chế độ LIÊN KẾT. Luôn chỉ ra khái niệm được hỏi nối với những khái niệm nào khác trong khoá, ưu tiên cầu nối giữa Buổi 01 và Buổi 02.",
+ apply:"Chế độ ỨNG DỤNG. Anh đưa một tình huống công việc thật. Hãy: 1) gọi tên tình huống bằng đúng khung của khoá (ví dụ đây là ca D3, hay đây là vấn đề Hygiene chứ không phải Motivator); 2) phân tích ngắn theo khung đó; 3) đưa 3 việc làm được ngay trong tuần này, có câu chữ mẫu nếu là chuyện giao tiếp; 4) nêu một dấu hiệu để biết cách làm đang có tác dụng."
+};
+
+/* ---- 4c.5 Lấy sẵn các mục liên quan từ chỉ mục offline, đưa kèm câu hỏi ---- */
+function aiHints(q){
+ var hits=[];try{hits=kbFind(q,5)}catch(e){return ""}
+ if(!hits.length)return "";
+ var s=hits.map(function(h){return "["+h.it.id+"] "+h.it.n.t}).join(" · ");
+ return "\n\n(Chỉ mục cục bộ gợi ý các mục có thể liên quan: "+s+". Chỉ dùng nếu đúng, không đúng thì bỏ qua.)";
+}
+
+/* ---- 4c.6 Gọi API, đọc luồng trả về từng chữ ---- */
+function aiStream(msgs,onText,onThink,signal){
+ return fetch(aiURL("/chat/completions"),{
+  method:"POST",signal:signal,
+  headers:{"Content-Type":"application/json","Authorization":"Bearer "+AI.key},
+  body:JSON.stringify({
+   model:AI.model,messages:msgs,stream:true,
+   stream_options:{include_usage:true},
+   max_tokens:Number(AI.maxtok)||6000,temperature:0.5
+  })
+ }).then(function(r){
+  if(!r.ok)return r.text().then(function(b){var e=new Error(aiErrText(r.status,b));e.st=r.status;throw e});
+  if(!r.body){var e2=new Error("Trình duyệt này không đọc được luồng dữ liệu. Anh cập nhật trình duyệt rồi thử lại.");throw e2}
+  var rd=r.body.getReader(),dec=new TextDecoder(),buf="",usage=null;
+  function pump(){
+   return rd.read().then(function(res){
+    if(res.done)return usage;
+    buf+=dec.decode(res.value,{stream:true});
+    var nl;
+    while((nl=buf.indexOf("\n"))>=0){
+     var line=buf.slice(0,nl).trim();buf=buf.slice(nl+1);
+     if(line.slice(0,5)!=="data:")continue;
+     var pl=line.slice(5).trim();
+     if(pl==="[DONE]")continue;
+     var j;try{j=JSON.parse(pl)}catch(e){continue}
+     if(j.usage)usage=j.usage;
+     var c=j.choices&&j.choices[0];if(!c)continue;
+     var d=c.delta||{};
+     if(d.reasoning_content)onThink(d.reasoning_content);
+     if(d.content)onText(d.content);
+    }
+    return pump();
+   });
+  }
+  return pump();
+ });
+}
+
+/* ---- 4c.7 Tách dòng NGUON ở cuối thành nút mở mục trên bản đồ ---- */
+function aiSplitSrc(txt){
+ var m=txt.match(/\n?\s*NGU\s*[OÔ]N\s*:\s*([^\n]*)\s*$/i);
+ if(!m)return {body:txt,ids:[]};
+ var ids=m[1].split(/[,;·]/).map(function(s){return s.trim().replace(/^\[|\]$/g,"")})
+   .filter(function(s){return s&&s.toLowerCase()!=="khong"&&s.toLowerCase()!=="không"&&NODEMAP[s]});
+ var seen={},uniq=[];ids.forEach(function(x){if(!seen[x]){seen[x]=1;uniq.push(x)}});
+ return {body:txt.slice(0,m.index),ids:uniq.slice(0,4)};
+}
+function aiFootHTML(ids,usage,ms){
+ var h="";
+ if(ids.length)h+='<div style="margin-top:10px">'+ids.map(function(id){return _openBtn(id,NODEMAP[id].t)}).join("")+"</div>";
+ var bits=[];
+ if(ms)bits.push(Math.round(ms/100)/10+" giây");
+ if(usage){
+  var inp=usage.prompt_tokens||0,outp=usage.completion_tokens||0,hit=usage.prompt_cache_hit_tokens;
+  bits.push(inp+" vào / "+outp+" ra");
+  if(hit)bits.push("đệm "+Math.round(hit/Math.max(inp,1)*100)+"%");
+ }
+ bits.push(AI.model);
+ h+='<div class="aifoot"><span class="tag">'+bits.join("</span><span class=\"tag\">· ")+"</span></div>";
+ return h;
+}
+
+/* ---- 4c.8 Bảng cài đặt ---- */
+var _sheet=document.getElementById("aisheet");
+var _fKey=document.getElementById("ai-key"),_fBase=document.getElementById("ai-base"),
+    _fModel=document.getElementById("ai-model"),_fLen=document.getElementById("ai-len"),
+    _fMsg=document.getElementById("ai-msg");
+function aiFillModels(list){
+ var cur=AI.model,opts=list||AI_MODELS;
+ if(!opts.some(function(o){return o.id===cur}))opts=opts.concat([{id:cur,t:cur}]);
+ _fModel.innerHTML=opts.map(function(o){return '<option value="'+o.id+'"'+(o.id===cur?" selected":"")+">"+o.t+"</option>"}).join("");
+}
+function aiSheetMsg(kind,txt){_fMsg.className="sheetmsg on "+kind;_fMsg.innerHTML=txt}
+function aiSheetOpen(){
+ _fKey.value=AI.key||"";_fBase.value=AI.base||AI_DEF.base;_fLen.value=String(AI.maxtok||6000);
+ var _sb=document.getElementById("ai-safe");
+ if(_sb)_sb.innerHTML=AI_KEY_SAN
+  ?"<b>Bản đồ này đã gắn sẵn key trong file, mở là chạy.</b> Ô trên đang hiện key đó, anh không cần làm gì. Vì file công khai trên GitHub nên ai mở link cũng đọc được key này - đây là đánh đổi đã chọn để khỏi phải nhập trên từng máy. Anh nhớ canh số dư ở trang DeepSeek. Muốn máy này chạy bằng key khác thì dán đè vào ô trên."
+  :"<b>Key nằm trong máy này, không lên mạng.</b> Key được lưu ở bộ nhớ trình duyệt của riêng thiết bị anh đang cầm, không nằm trong file trên GitHub và không ai mở link thấy được. Anh nhập một lần trên iPhone, một lần trên Mac. Xoá bất cứ lúc nào bằng nút bên dưới.";
+ aiFillModels(null);_fMsg.className="sheetmsg";
+ _sheet.classList.add("on");
+ setTimeout(function(){if(!AI.key)_fKey.focus()},120);
+}
+function aiSheetClose(){_sheet.classList.remove("on")}
+function aiReadForm(){
+ AI.key=_fKey.value.trim();
+ AI.base=(_fBase.value.trim()||AI_DEF.base);
+ AI.model=_fModel.value||AI_DEF.model;
+ AI.maxtok=Number(_fLen.value)||6000;
+ if(AI.key)AI.on=true;
+ aiSave();aiPaint();
+}
+document.getElementById("ai-bg").onclick=aiSheetClose;
+document.getElementById("ai-close").onclick=aiSheetClose;
+document.getElementById("ai-eye").onclick=function(){
+ var t=_fKey.type==="password";_fKey.type=t?"text":"password";this.textContent=t?"Ẩn":"Hiện";
+};
+document.getElementById("ai-clear").onclick=function(){
+ AI=Object.assign({},AI_DEF);if(!AI_KEY_SAN)AI.on=false;
+ try{localStorage.removeItem(AICFG_KEY)}catch(e){}
+ _fKey.value=AI.key||"";_fBase.value=AI.base;_fLen.value=String(AI.maxtok);aiFillModels(null);
+ aiPaint();
+ aiSheetMsg("ok",AI_KEY_SAN
+  ?"Đã bỏ thiết lập riêng của máy này. Bản đồ quay về dùng key gắn trong file."
+  :"Đã xoá key khỏi máy này. Bản đồ quay về tra cứu offline.");
+};
+document.getElementById("ai-test").onclick=function(){
+ aiReadForm();
+ if(!aiHasKey()){aiSheetMsg("err","Anh chưa dán key.");return}
+ var btn=this;btn.disabled=true;
+ aiSheetMsg("wait","Đang thử gọi máy chủ...");
+ fetch(aiURL("/models"),{headers:{"Authorization":"Bearer "+AI.key}})
+  .then(function(r){return r.ok?r.json():r.text().then(function(b){throw new Error(aiErrText(r.status,b))})})
+  .then(function(j){
+   var ids=(j.data||[]).map(function(m){return m.id}).filter(Boolean);
+   if(ids.length){
+    aiFillModels(ids.map(function(id){
+     var f=AI_MODELS.filter(function(x){return x.id===id})[0];return {id:id,t:f?f.t:id};
+    }));
+    if(!ids.some(function(x){return x===AI.model})){AI.model=ids[0];aiFillModels(ids.map(function(id){return {id:id,t:id}}))}
+    aiSave();aiPaint();
+   }
+   aiSheetMsg("ok","Kết nối tốt. Máy chủ đang mở "+ids.length+" model, bản đồ sẽ dùng <b>"+AI.model+"</b>. Anh đóng bảng này và hỏi thử.");
+  })
+  .catch(function(e){aiSheetMsg("err",String(e.message||e))})
+  .then(function(){btn.disabled=false});
+};
+_fModel.onchange=function(){AI.model=_fModel.value;aiSave();aiPaint()};
+
+/* ---- 4c.9 Vẽ lại thanh trạng thái ở cả hai tab ---- */
+function aiPaint(){
+ [1,2].forEach(function(n){
+  var sw=document.getElementById("aisw"+n),mt=document.getElementById("aimeta"+n);
+  if(!sw)return;
+  var on=aiOn();
+  sw.classList.toggle("on",on);sw.classList.toggle("off",!on);
+  sw.querySelector(".lbl").textContent=on?"Trợ giảng AI đang bật":(aiHasKey()?"AI đang tắt - tra offline":"Chưa gắn key - tra offline");
+  mt.innerHTML=on?("Suy luận bằng <b style=\"color:#E8CC77\">"+AI.model+"</b>"):
+   (aiHasKey()?"Bấm để bật lại suy luận AI":"Bấm bánh răng để dán key - bản đồ sẽ suy luận thay vì chỉ tra từ khoá");
+  var sub=document.getElementById("sub"+n);
+  if(sub)sub.textContent=on
+   ?(n===1?"Suy luận trên 73 mục của bản đồ — có mạng thì hỏi sâu, mất mạng vẫn tra được"
+          :"Mô tả tình huống, bản đồ soi bằng khung của khoá rồi đề xuất việc làm được")
+   :(n===1?"Tra thẳng trong 73 mục của bản đồ — chạy offline, không cần mạng"
+          :"Mô tả tình huống, bản đồ chỉ ra khung soi và việc làm được — chạy offline");
+ });
+}
+[1,2].forEach(function(n){
+ var sw=document.getElementById("aisw"+n),cg=document.getElementById("aicog"+n);
+ if(sw)sw.onclick=function(){
+  if(!aiHasKey()){aiSheetOpen();return}
+  AI.on=!AI.on;aiSave();aiPaint();
+ };
+ if(cg)cg.onclick=aiSheetOpen;
+});
+aiLoad();aiPaint();
+
 function mkChat(threadId,inputId,sendId,chipsId,chips,sysFn){
  const thread=document.getElementById(threadId),input=document.getElementById(inputId),send=document.getElementById(sendId);
  const hist=[];
+ let busy=null; /* AbortController khi đang chạy */
  document.getElementById(chipsId).innerHTML=chips.map(c=>`<button class="chip">${c}</button>`).join("");
  document.getElementById(chipsId).querySelectorAll(".chip").forEach(b=>b.onclick=()=>{input.value=b.textContent;submit()});
  function add(role,html){const d=document.createElement("div");d.className="msg "+(role==="user"?"me":"ai");d.innerHTML=html;thread.appendChild(d);thread.scrollTop=thread.scrollHeight;return d}
  function fmt(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/^### (.+)$/gm,"<b>$1</b>")}
- async function submit(){
-  const v=input.value.trim();if(!v)return;
-  input.value="";input.style.height="46px";add("user",fmt(v));send.disabled=true;
-  const load=add("ai",'<span class="dots"><span></span><span></span><span></span></span>');
-  hist.push({role:"user",content:v});
-  await new Promise(r=>setTimeout(r,180));
-  try{
-   load.innerHTML=kbReply(v,sysFn());
-  }catch(err){
-   load.innerHTML="Em chưa tra được câu này. Anh thử gõ ngắn hơn, ví dụ “Herzberg”, “D3”, “Check Trust”.";
+ function nearBottom(){return thread.scrollHeight-thread.scrollTop-thread.clientHeight<90}
+ function stick(was){if(was)thread.scrollTop=thread.scrollHeight}
+
+ function setBusy(on){
+  busy=on||null;
+  send.disabled=false;
+  send.classList.toggle("stop",!!on);
+  send.textContent=on?"■":"↑";
+  send.setAttribute("aria-label",on?"Dừng":"Gửi");
+ }
+
+ /* ---- Trả lời offline: tra thẳng trong bản đồ ---- */
+ function offline(v,box,note){
+  try{box.innerHTML=(note||"")+kbReply(v,sysFn())}
+  catch(err){box.innerHTML=(note||"")+"Em chưa tra được câu này. Anh thử gõ ngắn hơn, ví dụ “Herzberg”, “D3”, “Check Trust”."}
+  kbBind(box);
+ }
+
+ /* ---- Trả lời bằng AI: có suy luận, chảy từng chữ ---- */
+ function online(v,box){
+  const ctl=new AbortController();setBusy(ctl);
+  const t0=Date.now();
+  box.className="msg ai md";
+  box.innerHTML='<div class="mdbody"><span class="dots"><span></span><span></span><span></span></span></div>';
+  let body=box.querySelector(".mdbody"),think=null,tbody=null;
+  let txt="",rez="",raf=0,started=false;
+
+  function paint(){
+   raf=0;const was=nearBottom();
+   const sp=aiSplitSrc(txt);
+   const vis=sp.body.replace(/\n\s*NGU[^\n]*$/i,"");
+   body.innerHTML=mdHTML(vis)+(busy?'<span class="cursorblink"></span>':"");
+   stick(was);
   }
-  kbBind(load);
+  function onText(c){
+   if(!started){started=true;body.innerHTML=""}
+   txt+=c;if(!raf)raf=requestAnimationFrame(paint);
+  }
+  function onThink(c){
+   if(!think){
+    think=document.createElement("details");think.className="think";
+    think.innerHTML='<summary>Đang suy nghĩ…</summary><div class="tbody"></div>';
+    box.insertBefore(think,body);tbody=think.querySelector(".tbody");
+   }
+   rez+=c;const was=nearBottom();
+   tbody.textContent=rez;tbody.scrollTop=tbody.scrollHeight;stick(was);
+  }
+
+  const msgs=[{role:"system",content:SYS_AI}]
+   .concat(hist.slice(-8))
+   .concat([{role:"user",content:MODE_HINT[sysFn()]||MODE_HINT.hoc}])
+   .concat([{role:"user",content:v+aiHints(v)}]);
+  /* gộp hai lượt user liền nhau lại cho đúng chuẩn hội thoại */
+  const merged=[];msgs.forEach(function(m){
+   const last=merged[merged.length-1];
+   if(last&&last.role==="user"&&m.role==="user")last.content+="\n\n"+m.content;else merged.push(Object.assign({},m));
+  });
+
+  return aiStream(merged,onText,onThink,ctl.signal).then(function(usage){
+   if(raf){cancelAnimationFrame(raf);raf=0}
+   setBusy(null);
+   const sp=aiSplitSrc(txt);
+   if(!sp.body.trim()){offline(v,box,'<div style="font-size:12.5px;color:var(--muted);margin-bottom:9px">Máy chủ không trả về nội dung. Em tra tạm bằng chỉ mục trong bản đồ:</div>');box.className="msg ai";return}
+   box.innerHTML="";
+   if(think){think.querySelector("summary").textContent="Xem lại mạch suy luận";think.open=false;box.appendChild(think)}
+   const b=document.createElement("div");b.className="mdbody";b.innerHTML=mdHTML(sp.body);box.appendChild(b);
+   const f=document.createElement("div");f.innerHTML=aiFootHTML(sp.ids,usage,Date.now()-t0);box.appendChild(f);
+   kbBind(box);
+   hist.push({role:"user",content:v});
+   hist.push({role:"assistant",content:sp.body.trim()});
+   thread.scrollTop=thread.scrollHeight;
+  }).catch(function(err){
+   if(raf){cancelAnimationFrame(raf);raf=0}
+   setBusy(null);
+   if(err&&err.name==="AbortError"){
+    const sp=aiSplitSrc(txt);
+    box.innerHTML=(sp.body.trim()?mdHTML(sp.body):"")+'<div class="aifoot">Anh đã dừng giữa chừng.</div>';
+    kbBind(box);return;
+   }
+   const why=(err&&err.message)?err.message:"Không gọi được máy chủ.";
+   const net=/Failed to fetch|NetworkError|Load failed/i.test(why)
+    ?"Máy đang không có mạng, hoặc mạng chặn máy chủ AI. Em tra tạm bằng chỉ mục trong bản đồ:"
+    :why+" Em tra tạm bằng chỉ mục trong bản đồ:";
+   box.className="msg ai";
+   offline(v,box,'<div style="font-size:12.5px;color:var(--rose);line-height:1.6;margin-bottom:9px">'+_esc(net)+"</div>");
+   thread.scrollTop=thread.scrollHeight;
+  });
+ }
+
+ async function submit(){
+  if(busy){busy.abort();return}
+  const v=input.value.trim();if(!v)return;
+  input.value="";input.style.height="46px";add("user",fmt(v));
+  const load=add("ai",'<span class="dots"><span></span><span></span><span></span></span>');
+  if(aiOn()){online(v,load);return}
+  send.disabled=true;
+  await new Promise(r=>setTimeout(r,180));
+  offline(v,load,"");
   send.disabled=false;thread.scrollTop=thread.scrollHeight;
  }
  send.onclick=submit;
  input.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();submit()}});
  input.addEventListener("input",()=>{input.style.height="46px";input.style.height=Math.min(130,input.scrollHeight)+"px"});
- return {add,fmt};
+ return {add,fmt,ask:function(q){input.value=q;submit()}};
 }
 let chatMode="hoc";
 document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{
@@ -1670,7 +2243,10 @@ document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{
 });
 const chat1=mkChat("thread","input","send","chips",CHIPS,()=>chatMode);
 const chat2=mkChat("thread2","input2","send2","chips2",CHIPS2,()=>"apply");
-chat1.add("assistant","Chào anh Vinh. Đây là trợ giảng chạy offline ngay trong file. Anh gõ tên bất kỳ khái niệm nào của Buổi 01 và Buổi 02 — em mở đúng mục kèm bảng tra. Chọn <b>Kiểm tra tôi</b> để em hỏi ngược lại anh.");
+chat1.add("assistant",(aiOn()
+ ?"Chào anh Vinh. Trợ giảng đã bật sẵn, anh hỏi thẳng là được. Câu trả lời nào cũng kèm nút nguồn ở cuối — bấm là nhảy về đúng mục trên bản đồ."
+ :"Chào anh Vinh. Bấm bánh răng phía trên để dán key API — bản đồ sẽ suy luận thật chứ không chỉ tra từ khoá. Chưa gắn key thì vẫn tra cứu offline ngay trong file.")
+ +" Chọn <b>Kiểm tra tôi</b> để em hỏi ngược lại anh.");
 chat2.add("assistant","Anh mô tả một tình huống đang gặp ở Light Team — một người cụ thể, một việc cụ thể. Em sẽ gọi tên nó theo khung của khoá học rồi đề xuất ba việc làm được trong tuần này.");
 
 /* ============================================================
