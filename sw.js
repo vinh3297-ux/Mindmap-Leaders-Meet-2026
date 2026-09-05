@@ -1,6 +1,6 @@
 // Bản đồ LM2026 — service worker
 // Đổi số phiên bản mỗi khi cập nhật nội dung index.html
-const CACHE = 'lm2026-v3';
+const CACHE = 'lm2026-v4';
 const ASSETS = [
   './',
   './index.html',

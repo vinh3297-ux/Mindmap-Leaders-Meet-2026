@@ -452,7 +452,7 @@ table.k td{padding:7px 9px;border:1px solid var(--line-soft);vertical-align:top}
 
     <!-- ============ CHAT ============ -->
     <section class="view" id="v-chat">
-      <header class="top"><div><h1>Hỏi đáp với <em>trợ giảng</em></h1><div class="sub" id="sub1">Tra thẳng trong 73 mục của bản đồ — chạy offline, không cần mạng</div></div></header>
+      <header class="top"><div><h1>Hỏi đáp với <em>trợ giảng</em></h1><div class="sub" id="sub1">Tra thẳng trong 106 mục của bản đồ — chạy offline, không cần mạng</div></div></header>
       <div class="chatview">
         <div class="aibar">
           <button class="aisw off" id="aisw1" type="button"><span class="dot"></span><span class="lbl">Trợ giảng AI</span></button>
@@ -981,12 +981,274 @@ const SESSIONS = [
    ]}
  ]},
 
-{ id:"b3", t:"Buổi 03 — sắp cập nhật", color:"var(--pearl)", key:"pearl", sub:"Chờ tài liệu",
-  detail:{sum:"Nhánh này đã dựng sẵn khung. Khi có tài liệu Buổi 03, nội dung sẽ được đổ vào đúng cấu trúc Phần 1 – 2 – 3 và tự động nối vào ô tìm kiếm, hỏi đáp, ôn tập.",
-   pts:["Gửi bản PDF hoặc transcript kèm ảnh chụp slide — slide là phần transcript không có, và đó là chỗ hay tạo lỗ hổng kiến thức nhất.","Sau khi cập nhật, các cầu nối xuyên buổi cũng sẽ được vẽ thêm."]},
-  parts:[{id:"b3p1", t:"Phần 1 · (chưa có dữ liệu)", detail:{sum:"Chỗ dành sẵn cho Phần 1 của Buổi 03."}, nodes:[]},
-         {id:"b3p2", t:"Phần 2 · (chưa có dữ liệu)", detail:{sum:"Chỗ dành sẵn cho Phần 2 của Buổi 03."}, nodes:[]},
-         {id:"b3p3", t:"Phần 3 · (chưa có dữ liệu)", detail:{sum:"Chỗ dành sẵn cho Phần 3 của Buổi 03."}, nodes:[]}]},
+{ id:"b3", t:"Buổi 03 — Dẫn đầu bằng Mục đích", color:"var(--pearl)", key:"pearl",
+  sub:"Động lực · Hiệu quả cá nhân · Bền vững",
+  detail:{sum:"Buổi 03 đi theo ba tầng chồng lên nhau: hiểu con người trước, rồi làm cho từng cá nhân giỏi, rồi mới ghép cá nhân thành tổ chức bền vững. Bỏ tầng dưới thì tầng trên không đứng được.",
+   pts:["<b>Điểm chốt của cả buổi:</b> người lãnh đạo <b>không tạo ra động lực</b> cho nhân viên. Người lãnh đạo tạo điều kiện để động lực vốn có bên trong mỗi người được giải phóng — bằng cách chỉ ra mục đích, hỗ trợ sự tiến bộ và trao đủ quyền tự chủ.",
+    "Mạch nhân quả: <b>Động lực nội tại</b> = Autonomy + Mastery + Purpose → <b>Hiệu quả cá nhân</b> = Pressure × Skills × Motivation → <b>Thành quả đội ngũ</b> = Thành quả cá nhân × Số nhân viên → <b>Bền vững</b> = Gắn kết + An toàn tâm lý × Lòng can đảm + Đổi mới.",
+    "Tài liệu gốc: 29 slide bài giảng, 24 mô hình và khung tư duy, ghi chép lớp học đối chiếu với slide."]},
+  parts:[
+   {id:"b3p1", t:"Phần 1 · Hiểu về động lực con người",
+    detail:{sum:"Trước khi bàn tới KPI, quy trình hay văn hoá, phải trả lời câu hỏi gốc: con người vốn dĩ là gì, và vì sao họ chịu làm việc? Đi từ triết học phương Đông, qua Pascal, tới Daniel Pink."},
+    nodes:[
+    {id:"n-b3thienac", t:"Hai quan điểm đối lập về bản chất con người", tag:"Triết học gốc", dia:"thienac",
+     sum:"Triết học phương Đông có hai quan điểm trái ngược, và mỗi quan điểm dẫn tới một cách quản trị hoàn toàn khác.",
+     pts:["<b>Khổng Tử – Mạnh Tử:</b> “Nhân chi sơ, tính bản thiện”. Con người vốn sinh ra tốt đẹp, vì hoàn cảnh và môi trường mà xấu đi. Chỉ cho người ta cái đúng thì người ta tự tìm tới → quản lý theo <b>LỄ</b>.",
+      "<b>Tuân Tử – Hàn Phi Tử:</b> “Nhân chi sơ, tính bản ác”. Con người sinh ra vốn ích kỷ, chỉ biết mình; nhờ học, nhờ giáo dục mà tốt lên. Phải thưởng phạt công minh thì người ta mới theo → quản lý theo <b>PHÁP</b>."],
+     pts2:["<b>Lễ trị làm gì trong thực tế:</b> mô tả cho mọi người biết làm cha là thế nào, làm thầy là thế nào, làm sếp là thế nào. Khi đã mô tả rõ, người ta biết phải làm gì.",
+      "<b>Pháp trị làm gì:</b> thưởng phạt công minh. Người ta theo vì tìm thưởng và tránh phạt."],
+     app:"Bảng mô tả công việc và bộ chuẩn nghề của Light Team chính là phần Lễ. Bảng hoa hồng, chỉ tiêu và kỷ luật là phần Pháp. Thiếu vế nào cũng lệch: chỉ có Lễ thì người lười không nhúc nhích, chỉ có Pháp thì người giỏi thấy mình bị coi thường."},
+    {id:"n-b3lephap", t:"Từ Lễ trị đến Pháp trị và Pháp quyền", tag:"Mạch tiến hoá", dia:"lephap",
+     sum:"Mạch tiến hoá này không có trên slide, chỉ có trong ghi chép lớp — nhưng lại là chỗ nối quan trọng nhất giữa triết học cổ và quản trị doanh nghiệp hôm nay.",
+     tbl:{h:["Giai đoạn","Cách làm","Hạn chế"],r:[
+      ["LỄ TRỊ","Mô tả cái đúng, người ta tự theo","Người càng đông, càng thông minh thì lễ trị không nổi"],
+      ["PHÁP TRỊ","Thưởng phạt công minh","Nhiều người làm quá đà, làm vì ý riêng"],
+      ["PHÁP QUYỀN","Tất cả đều nằm dưới pháp luật","—"]]},
+     pts:["Càng về sau loài người càng phải đi về phía pháp trị: người càng thông minh hơn, độ phức tạp càng tăng, lễ trị không nổi.",
+      "<b>Pháp quyền khác pháp trị ở đâu:</b> ở pháp trị, người trên nằm <b>TRÊN</b> pháp luật, người dưới nằm <b>DƯỚI</b> pháp luật. Ở pháp quyền, <b>tất cả</b> đều nằm dưới pháp luật."],
+     pts2:["Bên trong một tổ chức, pháp quyền có tên gọi khác: <b>CHÍNH SÁCH và QUY TRÌNH</b> — những thứ phải nghiên cứu kỹ mới ban hành, để cho chuẩn."],
+     app:"Test pháp quyền cho Light Team: quy định về chia khách, về giờ họp, về báo cáo — trưởng nhóm có nằm dưới cùng bộ quy định đó không, hay có ngoại lệ? Chỗ nào có ngoại lệ cho cấp trên, chỗ đó vẫn là pháp trị và anh em nhìn thấy hết."},
+    {id:"n-b3pascal", t:"Cây sậy biết suy nghĩ — Blaise Pascal", tag:"Nền triết học",
+     sum:"Nền tảng triết học cho toàn bộ khoa học quản lý con người hiện đại.",
+     pts:["<i>“Man is only a reed, the weakest in nature, but he is a thinking reed.”</i> — Con người chỉ là một cây sậy, yếu ớt nhất trong tự nhiên, nhưng là một cây sậy <b>biết suy nghĩ</b>. (Blaise Pascal)",
+      "Câu này đánh động cả nửa châu Âu. Những người cai trị lúc đó chấn động, vì hiểu ra rằng phải biết quản lý con người một cách <b>đúng đắn, bài bản</b> thì mới được — dù con người có yếu ớt, nhưng họ biết suy nghĩ."],
+     app:"Áp vào nghề: nhân viên sale nhìn thì mong manh trước áp lực số, nhưng họ biết suy nghĩ — nghĩa là họ nhận ra ngay khi bị đối xử như công cụ chạy số. Quản lý bài bản mới giữ được người, không phải hô hào."},
+    {id:"n-b3motos", t:"Ba hệ điều hành động lực — Daniel Pink", tag:"Mô hình", dia:"motos",
+     sum:"Daniel Pink ví động lực con người như hệ điều hành của máy tính: qua từng thời kỳ, loài người chạy trên một phiên bản khác nhau.",
+     tbl:{h:["Phiên bản","Tên gốc","Nội dung"],r:[
+      ["Motivation 1.0","Essential Survival Needs","Động lực gốc: sinh tồn, nhu cầu cơ bản (ăn, ngủ, an toàn)"],
+      ["Motivation 2.0","Carrot and Stick Philosophy","“Cây gậy và củ cà rốt” — thưởng và phạt là động lực chính"],
+      ["Motivation 3.0","Autonomy, Mastery, Purpose","Quyền tự chủ, phát triển bản thân, đời sống có mục đích và ý nghĩa"]]},
+     app:"Phần lớn cách quản lý sale hiện nay dừng ở Motivation 2.0: thưởng nóng, phạt doanh số. Nó chạy được nhưng có trần. Muốn qua trần phải lên 3.0."},
+    {id:"n-b3amp", t:"Autonomy – Mastery – Purpose", tag:"Mô hình lõi", dia:"amp",
+     sum:"Ba yếu tố của động lực nội tại. Mỗi cá nhân có động lực từ đâu, muốn nâng lên thì tác động đúng chỗ đó.",
+     pts:["<b>PURPOSE — Mục đích:</b> làm việc vì điều có ý nghĩa lớn hơn bản thân. Bất kỳ ai có mục đích, hoài bão, tầm nhìn thì đã có sẵn <b>một lực hút từ phía tương lai</b> kéo họ đi tới, khiến họ làm việc không biết mệt mỏi. Hay thấy ở người khởi nghiệp: làm không tính giờ, chưa thấy kết quả nhưng tin thế nào cũng được.",
+      "<b>MASTERY — Sự thành thạo:</b> không ngừng học hỏi để ngày càng giỏi hơn. Ngày càng giỏi trong một việc, hoặc có những <b>quick win</b>, thì không thấy mệt. Đây chính là dopamine trong y khoa.",
+      "<b>AUTONOMY — Sự tự chủ:</b> quyền tự quyết định cách thức, thời gian và cách làm việc. Chỉ cần giao quyền hạn <b>vừa đủ</b> để làm việc được giao, họ sẽ giải phóng toàn bộ rào cản trong người."],
+     pts2:["<b>Mặt trái của Mastery:</b> dopamine có tính ngắn hạn và đôi khi gây nghiện — tôi thành công rồi, nhưng tương lai không có thành công kế tiếp thì tôi thấy chán đời. Phải hiểu rõ để không nghiện, không đòi thành công vào sai thời điểm, không để mình bị phụ thuộc.",
+      "Nhiều người mất tinh thần là do <b>trí tưởng tượng</b>, mà nguyên nhân nằm ở chỗ họ không đủ quyền tự chủ để làm việc được giao. Thấy nhân viên thiếu góc nào thì bơm cho góc đó.",
+      "Có nhân viên vừa giỏi vừa đủ quyền, nhưng mục tiêu đời của họ không đi chung đường với tổ chức — khi đó phải làm việc lại về tinh thần, để họ thấy điều họ theo đuổi thực chất cùng chiều với tổ chức, chỉ là chưa hiểu ra."],
+     app:"Ba câu hỏi chẩn nhanh cho từng bạn trong Light Team. Purpose: bạn ấy nói được vì sao mình làm nghề này không? Mastery: ba tháng qua bạn ấy giỏi thêm được cái gì? Autonomy: bạn ấy phải xin phép anh mấy lần một tuần? Câu nào tắc là góc đó thiếu."},
+    {id:"n-b34vung", t:"Bốn vùng giao thoa và đích đến của lãnh đạo", tag:"Bảng tra", dia:"amp",
+     sum:"Ba vòng tròn giao nhau tạo ra bốn vùng. Ba vùng đôi một là ba điều kiện bắt buộc để đi từ yếu tố này sang yếu tố kia; vùng chính giữa mới là đích.",
+     tbl:{h:["Vùng","Giao của","Ý nghĩa"],r:[
+      ["1 · Kỷ luật","Purpose × Mastery","Yếu tố duy trì trên hành trình rèn luyện Sự thành thạo. Muốn đi từ mục đích sang thành thạo, bắt buộc phải có tính kỷ luật"],
+      ["2 · Dấn thân","Mastery × Autonomy","Yếu tố biểu hiện khi có Sự tự chủ. Muốn đi từ thành thạo qua tự chủ, phải dấn thân"],
+      ["3 · Khát khao","Autonomy × Purpose","Yếu tố thôi thúc từ việc được tự chủ để đi đến mục tiêu. Quyền tự chủ bao giờ cũng đi kèm trách nhiệm"],
+      ["4 · Động lực nội tại","Cả ba yếu tố","Động lực rất lớn, chỉ có được khi hội đủ ba yếu tố. Là nền tảng chính để xây văn hoá hiệu suất cao, bền vững và gắn kết"]]},
+     pts2:["<b>Đích đến của người lãnh đạo:</b> làm cho nhân viên lọt vào vùng động lực nội tại — đủ để giao việc mà họ làm không cần nhắc nhở. Đó chính là <b>flow channel</b>: việc bao nhiêu giao tới cũng xong.",
+      "<b>Duy trì thế nào:</b> xây dựng văn hoá để có môi trường hiệu suất cao; và qua từng vòng tròn mà nâng chỗ thiếu sót của nhân viên lên.",
+      "Câu lớp học đưa ra để suy ngẫm — đề thi tú tài môn Triết miền Nam năm 1966, câu số 8: “Có phải trách nhiệm và quyền hạn (sự tự do) luôn đi kèm với nhau?”"],
+     app:"Chẩn từng bạn trong Light Team theo ba vòng: bạn nào thiếu Purpose thì ngồi lại về mục tiêu 3 năm; thiếu Mastery thì cho quick win và kèm nghề; thiếu Autonomy thì trao quyền chốt giá trong biên độ, đừng bắt xin phép từng ca."},
+    {id:"n-b33truong", t:"Áp dụng linh hoạt: Lễ – Pháp – Daniel Pink", tag:"So sánh",
+     sum:"Ba trường phái không loại trừ nhau. Đặt cạnh nhau để thấy mỗi cách dẫn dắt tác động vào đâu trong con người.",
+     tbl:{h:["Trường phái","Cách làm","Phạm vi tác động"],r:[
+      ["Khổng Tử","Dùng Lễ giáo dẫn dắt, chỉ cho họ con đường sáng để họ bước tới","Khoảng 70% số người — nhóm hướng thiện"],
+      ["Hàn Phi Tử","Dùng Pháp luật để điều chỉnh, làm cho họ tìm thưởng tránh phạt","Khoảng 30% còn lại"],
+      ["Daniel Pink","Trao quyền tự chủ, hỗ trợ sự tiến bộ và chỉ ra mục đích","Tác động được cả hai nhóm cùng lúc"]]},
+     pts:["<b>Vì sao Daniel Pink phủ được cả hai nhóm:</b> đây là cách <b>trung tính ở giữa</b>, không bị nghiêng về phía thiện hay bất thiện của con người. Khổng Tử hay Hàn Phi Tử thì chỉ để giảng bài cho hiểu; còn khi làm, tốt nhất là làm theo Daniel Pink."],
+     pts2:["<i>“Every saint has a past, every sinner has a future.”</i> — Mỗi thánh nhân đều có một quá khứ, mỗi tội đồ đều có một tương lai.",
+      "<b>Trách nhiệm với người mình dẫn dắt:</b> không ai đi cùng mình hết 70–80 năm; dù nhiều hay ít cũng chỉ là một chặng đường. Khi mình dính với họ một chặng nào đó, trách nhiệm của mình là làm cho họ tốt hơn.",
+      "Nhân viên mình không phải thánh nhân, cũng không phải tội đồ. Nhân viên làm chung dở cỡ nào cũng hãy giúp họ tốt hơn; nhân viên tài năng cỡ nào cũng có góc khuất mình chưa phát hiện."],
+     app:"Với 20 người của Light Team: đừng chia thành nhóm ngoan và nhóm lười rồi dùng hai cách đối xử. Dùng chung một cách — chỉ mục đích, hỗ trợ tiến bộ, trao quyền — rồi điều chỉnh liều lượng theo từng người."}
+   ]},
+   {id:"b3p2", t:"Phần 2 · Thành tích cá nhân là nền tảng thành công chung",
+    detail:{sum:"Chưa có cá nhân ổn thì chưa nói tới đội ngũ. Phần 2 đưa ra công cụ đo một cá nhân — tam giác Pressure – Skills – Motivation — rồi mở rộng ra môi trường, văn hoá, và cuối cùng là chỗ khớp giữa mục đích cá nhân với sứ mệnh tổ chức."},
+    nodes:[
+    {id:"n-b3psm", t:"Tam giác hiệu quả cá nhân", tag:"Mô hình lõi", dia:"psm",
+     sum:"Hiệu quả cá nhân nằm ở tâm của tam giác Áp lực – Kỹ năng – Động lực.",
+     tbl:{h:["Yếu tố","Nếu thiếu thì sao","Nghĩa là"],r:[
+      ["ÁP LỰC · Pressure","Không có áp lực, người ta không làm việc","PHẢI LÀM"],
+      ["KỸ NĂNG · Skills","Skill không đủ, người ta làm mà làm không được","BIẾT LÀM"],
+      ["ĐỘNG LỰC · Motivation","Có áp lực, có kỹ năng, mà không được khích lệ đủ thì không muốn làm","MUỐN LÀM"]]},
+     pts:["<b>Vì sao bắt buộc phải là tam giác đều:</b> nếu không đều thì diện tích rất nhỏ. Trong các đa giác cùng chu vi, <b>đa giác đều có diện tích lớn nhất</b>. Tốn cùng một lượng vật liệu để xây, muốn diện tích lớn nhất thì phải đều.",
+      "Lãnh đạo phải hiểu ý nghĩa từng cái và làm cho ba góc của nhân viên đều nhau."],
+     app:"Một bạn sale có động lực cao ngất, áp lực chỉ tiêu đầy đủ, nhưng kỹ năng chốt còn yếu — tam giác lệch, diện tích nhỏ, ra ít số. Bơm thêm động lực lúc này là vô ích; phải bơm đúng góc kỹ năng."},
+    {id:"n-b3apluc", t:"Áp lực cần thiết và áp lực không cần thiết", tag:"Bảng tra",
+     sum:"Ba yếu tố phải đúng và cân bằng. Riêng áp lực, phải phân biệt được loại nên có và loại phải bỏ.",
+     tbl:{h:["ÁP LỰC CẦN THIẾT — nên có","ÁP LỰC KHÔNG CẦN THIẾT — phải bỏ"],r:[
+      ["Chỉ tiêu cao","Chỉ tiêu quá cao"],
+      ["Khối lượng công việc nhiều, tốc độ làm việc nhanh","Ép tốc độ vượt quá năng lực thật của đội"],
+      ["Họp thường xuyên","Họp quá thường xuyên"],
+      ["Đo lường KPI chính xác","Đo lường KPI chi li, tiểu tiết"]]},
+     pts:["<b>Kỹ năng liên quan:</b> mài giũa những kỹ năng cần thiết để hoàn thành công việc. Không đòi hỏi nhân viên có những kỹ năng không liên quan, vì nó có thể làm mất tập trung.",
+      "<b>Biết tự động viên:</b> giúp nhân viên hiểu rằng tính cách của họ và công việc họ đang làm rất phù hợp với Văn hoá và Tầm nhìn của công ty; họ có vai trò quan trọng trong tổ chức."],
+     pts2:["Giao ai việc gì thì phải biết việc đó cần kỹ năng gì, đừng đòi kỹ năng khác — tránh làm nhân viên mất tinh thần một cách vô ích. Ví dụ: việc cần người thuyết trình giỏi, mà bạn đó làm PowerPoint dở thì nhờ người khác giúp phần PowerPoint, không sao cả.",
+      "Dạy nhân viên <b>biết tự động viên</b> thay vì ngồi đợi động viên từ bên ngoài."],
+     app:"Với Light Team: chỉ tiêu tháng là áp lực cần thiết. Bắt báo cáo từng cuộc gọi, từng tin nhắn là KPI chi li — áp lực không cần thiết, phải bỏ. Bạn giỏi mặt đất mà bắt làm content TikTok cho bằng người khác cũng là đòi kỹ năng không liên quan."},
+    {id:"n-b3eq3", t:"Thang EQ — công cụ để biết thế nào là vừa đủ", tag:"Công cụ", dia:"eq3",
+     sum:"Câu hỏi khó nhất là: thế nào là vừa đủ? Không có công thức chung, tuỳ tình huống — cái quyết định là EQ của người lãnh đạo khi nói chuyện. EQ ở đây được định nghĩa rất cụ thể: khả năng phân biệt.",
+     tbl:{h:["Bậc EQ","Phân biệt được","Ví dụ"],r:[
+      ["EQ trung bình","Những cái KHÁC NHAU","can đảm ↔ nhút nhát · phung phí ↔ tiết kiệm"],
+      ["EQ cao","Những cái GẦN GIỐNG NHAU — không cần công thức đo","can đảm ↔ liều mạng · tiết kiệm ↔ keo kiệt · phung phí ↔ rộng rãi"],
+      ["EQ rất cao","Những cái RẤT GIỐNG NHAU","áp lực cần thiết ↔ áp lực không cần thiết"]]},
+     pts2:["Đây chính là mức EQ cần để biết đâu là ranh giới giữa áp lực cần thiết và áp lực không cần thiết."],
+     app:"Trước khi ép thêm một bạn, tự hỏi: mình đang đòi hỏi cao hay đang đòi hỏi quá đáng? Phân biệt được hai thứ rất giống nhau đó mới là EQ rất cao."},
+    {id:"n-b3thuchanh", t:"Thực hành: chấm điểm tam giác cân bằng", tag:"Bài tập",
+     sum:"Bài thực hành tại lớp: chấm điểm từng nhân viên trên ba yếu tố và lập kế hoạch nâng yếu tố yếu.",
+     pts:["<b>Bước 1:</b> đánh giá từng nhân viên trên từng yếu tố theo thang điểm 1 đến 5.",
+      "<b>Bước 2:</b> lên kế hoạch để tăng cường những yếu tố có điểm dưới 3.",
+      "<b>Bước 3:</b> cho ví dụ một vài hành động và trình bày."],
+     tbl:{h:["Nhân viên","Áp lực (1-5)","Kỹ năng (1-5)","Động lực (1-5)","Yếu tố dưới 3 — hành động cụ thể"],r:[
+      ["","","","",""],["","","","",""],["","","","",""],["","","","",""]]},
+     pts2:["Thời gian thực hiện tại lớp: 15 phút · chia sẻ: 10 phút."],
+     app:"Anh làm lại bảng này cho 4 squad RED, BLUE, GREEN, YELLOW. Mỗi trưởng nhóm chấm người của mình, anh chấm 4 trưởng nhóm. Chỗ nào dưới 3 là chỗ phải can thiệp trong tháng."},
+    {id:"n-b3flow", t:"Flow Channel và Nguyên tắc Peter", tag:"Hỏi đáp lớp", dia:"flow",
+     sum:"Nghi vấn tại lớp: thời đại này không đo bằng số năm kinh nghiệm mà đo bằng sự thành thạo — làm sao để sale tự nhận thức và thay đổi? Câu trả lời là Flow Channel và Nguyên tắc Peter.",
+     pts:["<b>Lo lắng (Anxious):</b> thách thức lớn hơn kỹ năng. Người ta thấy áp lực, dễ nản.",
+      "<b>Chán (Bored):</b> kỹ năng lớn hơn thách thức. Quá dễ.",
+      "<b>Flow Channel:</b> ở giữa hai vùng đó — làm như không làm vẫn xong."],
+     pts2:["<b>Nguyên tắc Peter:</b> trong một tổ chức, mọi người có xu hướng <b>đạt tới sự bất tài</b>.",
+      "<b>Cơ chế:</b> nhân viên đang ở flow channel là giỏi → công ty cho lên chức → nhảy sang vùng lo lắng → cày một thời gian → về lại flow channel → sếp lại cho lên chức hoặc giao việc mới. Vì khi được cho lên chức, họ không từ chối."],
+     app:"Bạn nào ở Light Team đang chán vì việc quá dễ thì giao thêm thách thức — chính họ sẽ tự đề xuất việc mới. Bạn nào vừa lên trưởng nhóm mà lúng túng thì đang ở vùng lo lắng, cần kèm chứ không cần ép."},
+    {id:"n-b3702010", t:"Mô hình học tập 70 – 20 – 10", tag:"Công cụ", dia:"t702010",
+     sum:"Nghi vấn tại lớp: GenZ quan niệm không nên làm quần quật, làm phải chill, phải chơi? Nếu khó nói chuyện nhân sinh quan thì dùng 70-20-10.",
+     tbl:{h:["Tỷ lệ","Học từ đâu"],r:[
+      ["70%","Học từ chính công việc thật hằng ngày"],
+      ["20%","Học từ người khác"],
+      ["10%","Thầy, sách"]]},
+     pts:["Lấy đúng phần <b>10%</b> này ra dùng: đưa nhân viên cho thầy chỉ điểm, nếu có thời gian."],
+     app:"Không cãi nhau về nhân sinh quan với bạn Gen Z trong team. Đưa bạn đó đi học một khoá, hoặc gắn với một người thầy trong nghề — để phần 10% làm việc thay mình."},
+    {id:"n-b3moitruong", t:"Môi trường và văn hoá công ty phải tạo ra", tag:"Bảng tra",
+     sum:"Sau khi đã đo được cá nhân, câu hỏi tiếp theo: công ty phải làm gì để ba yếu tố đó có đất sống?",
+     tbl:{h:["Yếu tố của cá nhân","Công ty phải làm gì"],r:[
+      ["Áp lực cần thiết","Cung cấp đầy đủ điều kiện làm việc · Khích lệ tinh thần làm việc nhóm · Không chấp nhận những áp lực không cần thiết"],
+      ["Kỹ năng liên quan","Tổ chức training / coaching · Khích lệ chia sẻ kinh nghiệm và cách làm hay · Không chấp nhận những lỗi do bất cẩn"],
+      ["Biết tự động viên","Chia sẻ Tầm nhìn, Sứ mệnh, Giá trị cốt lõi · Đồng nhất mục tiêu cá nhân với mục tiêu Tổ chức · Khích lệ văn hoá phân quyền"]]},
+     pts2:["Áp lực công ty đưa ra phải được <b>chính người đó công nhận</b>. Xem lại môi trường có đầy đủ khích lệ, chân thật, minh bạch hay không.",
+      "<b>Về phân quyền:</b> công ty mới khởi nghiệp thì tay dài đâu cũng tới. Nếu công ty phình to mà lãnh đạo vẫn muốn bao trùm mọi ngóc ngách thì bắt buộc phải có văn hoá phân quyền. Công ty khích lệ phân quyền thì nhân viên tự động viên cao lên."],
+     app:"Light Team đã 20 người chia 4 squad — quá ngưỡng để anh ôm hết. Chỗ nào anh còn duyệt từng ca, chỗ đó đang chặn tự động viên của trưởng nhóm."},
+    {id:"n-b3traincoach", t:"Training khác Coaching ở đâu", tag:"Bảng tra",
+     sum:"Hai cách phát triển người khác nhau về tỷ lệ và về việc ai làm phần lớn công việc.",
+     tbl:{h:["","Tỷ lệ","Cách vận hành"],r:[
+      ["Training","50% lý thuyết · 50% thực hành","Đào tạo theo lớp, truyền đạt kiến thức và cho làm thử"],
+      ["Coaching","90% thực hành","Người sếp trực tiếp cùng nhân viên đi vào chính công việc đó. Nhân viên làm 90%, người coach quan sát, nhận xét, chỉ điểm"]]},
+     pts2:["Kèm theo đó, công ty khích lệ những <b>best practice</b> và khích lệ chia sẻ những cách làm hay."],
+     app:"Buổi đào tạo sản phẩm đầu tuần là training. Đi cùng bạn sale ra gặp khách rồi ngồi lại mổ băng là coaching — và đó mới là cái làm bạn ấy lên tay."},
+    {id:"n-b3doingu", t:"Công thức thành quả đội ngũ", tag:"Công thức",
+     sum:"Thành quả của Đội ngũ = Thành quả cá nhân × Số nhân viên.",
+     pts:["Vì là <b>phép nhân</b> nên chỉ cần thành quả cá nhân yếu, quy mô lớn cũng không cứu được.",
+      "Ba việc phải làm: <b>huấn luyện / đào tạo / hỗ trợ</b> cho nhân viên chưa đạt yêu cầu (buy time) · <b>đề cao trách nhiệm cá nhân</b> · <b>ăn mừng</b> sau mỗi thành công."],
+     pts2:["Trách nhiệm cá nhân là trên hết. Nếu giúp người ta nhận ra trách nhiệm cá nhân và có năng lực hoàn thành trách nhiệm đó — thì đúng là triết lý giáo dục Nhật Bản."],
+     app:"Tuyển thêm người khi thành quả cá nhân trung bình còn thấp là nhân một số nhỏ với một số lớn — vẫn ra số nhỏ. Nâng chất trước, rồi mới nhân quy mô."},
+    {id:"n-b33goc", t:"Ba yếu tố tạo nên thành tích đội nhóm", tag:"Khung",
+     sum:"Một con người phù hợp với tổ chức thì có từ những góc cạnh nào? Câu trả lời gồm ba góc.",
+     pts:["<b>1 · Sứ mệnh có ý nghĩa:</b> bản thân họ đang có một sứ mệnh có ý nghĩa; vào công ty thì sứ mệnh đó khớp với sứ mệnh công ty.",
+      "<b>2 · Hỗ trợ nguồn lực:</b> có đủ nguồn lực cần thiết — nhân lực · tài lực · vật lực · thông tin · thời gian.",
+      "<b>3 · Môi trường lành mạnh:</b> nếu công ty không làm tốt phần này thì một ngày nào đó nhân viên sẽ thấy mình không còn phù hợp."],
+     pts2:["Thiếu một trong ba góc thì thành tích đội nhóm không đứng được lâu."],
+     app:"Bạn nghỉ việc thường không phải vì lương. Rà lại ba góc: sứ mệnh có khớp không, nguồn lực có đủ không, môi trường có lành không — thường lỗi nằm ở góc thứ ba."},
+    {id:"n-b3muctieu", t:"Công thức đạt mục tiêu chung", tag:"Công thức",
+     sum:"Cam kết + Kỷ luật + Tinh thần đồng đội — ba thành phần cộng lại mới ra mục tiêu chung.",
+     tbl:{h:["Thành phần","Biểu hiện"],r:[
+      ["CAM KẾT","Một nhóm nhỏ cùng cam kết — giám sát nhau — nâng đỡ lẫn nhau · Thảo luận thẳng thắn, khích lệ và hỗ trợ"],
+      ["KỶ LUẬT","Hoàn thành trách nhiệm cá nhân · Tôn trọng tiến độ và tiêu chuẩn chất lượng chung"],
+      ["TINH THẦN ĐỒNG ĐỘI","Duy trì năng lượng cao của cả nhóm · Định kỳ chia sẻ, đánh giá và phản hồi"]]},
+     pts2:["<b>Ví dụ con báo:</b> vẽ con báo từ từng đốm nhỏ — mỗi phòng ban như một đốm của con báo. Có đủ đốm thì mới thành con báo.",
+      "Thành tích phải đạt tiêu chuẩn công ty, tránh trường hợp có số lượng nhưng không có chất lượng.",
+      "<b>Điều kiện tiên quyết:</b> chỉ nói tới đội ngũ khi trong tay đã có cá nhân ổn — tức là phải có tam giác đều ở trước đã."],
+     app:"Bốn squad của Light Team là bốn đốm da báo. Đốm nào mờ thì con báo không thành hình — nhìn vào squad yếu nhất chứ đừng nhìn squad mạnh nhất."},
+    {id:"n-b3tamnhin", t:"Tầm nhìn và sứ mệnh cá nhân", tag:"Định nghĩa",
+     sum:"Phải biết lẽ sống, mục tiêu cuộc đời, thì mới hiểu vector cuộc đời của mình có trùng với tổ chức hay không.",
+     tbl:{h:["","Là gì","Ví dụ"],r:[
+      ["TẦM NHÌN CÁ NHÂN","Hình ảnh lý tưởng mà mỗi người mong muốn hướng tới trong tương lai","“Trở thành người quản lý nhân sự truyền cảm hứng và xây dựng văn hoá tích cực cho nơi làm việc.”"],
+      ["SỨ MỆNH CÁ NHÂN","Lý do tồn tại, giá trị mà một người mong muốn tạo ra thông qua hành động, công việc","“Tạo ra những trải nghiệm nhân sự đầy ý nghĩa để mỗi nhân viên cảm thấy mình được tôn trọng, được phát triển và được cống hiến.”"]]},
+     pts:["Ba bước: <b>1</b> xác định nhân sinh quan, EQ và quản lý cái Tôi → <b>2</b> định hình tầm nhìn và sứ mệnh cá nhân → <b>3</b> trả lời hai câu hỏi lớn.",
+      "Hai câu hỏi lớn: “Tôi muốn tạo giá trị gì trong cuộc sống này?” và “Tôi đang đóng góp điều gì cho tổ chức và xã hội thông qua công việc hàng ngày?”",
+      "<b>Câu hỏi tự xác định tầm nhìn 3–5 năm:</b> “Nếu bắt đầu từ mai, mọi việc diễn ra đều rất thuận lợi theo ý mình, thì sau 3 hoặc 5 năm mình sẽ trở thành người thế nào?” — trả lời trên ba phương diện: hình ảnh cá nhân · gia đình và công việc · điều người ngoài xã hội nghĩ về mình."],
+     pts2:["<b>Quy luật vô thường:</b> thành công vật chất hay tinh thần chỉ là một lát cắt cuộc đời. Mạng sống còn không chắc, thì lát cắt sao mà bền? <b>Giá trị mới bền.</b>",
+      "Nếu bạn làm 10 mà lãnh 5, thì cái 5 còn lại sẽ quay lại bằng hai cách: một ngày nào đó là tiền, hoặc quay lại bằng uy tín cá nhân; có khi quay lại bằng đức — đỡ được tai nạn.",
+      "<b>Tại sao mình có mặt ở tổ chức này:</b> mình giúp người ta đáp ứng sứ mệnh của tổ chức, và mình cũng nhờ con tàu này mà đi về sứ mệnh của mình.",
+      "Phải lãnh đạo bản thân cho tốt để không bị lệch khỏi đường ray. Mình đang ở đội ngũ nào thì phải cùng chiều với đội ngũ đó; và đội ngũ thì phải cùng chiều với nhân loại."],
+     app:"Mục tiêu 2026 của anh — doanh số cá nhân, thương hiệu cá nhân, phát triển đội ngũ — chính là tầm nhìn. Ngồi viết ra sứ mệnh đi kèm, rồi bắt từng trưởng nhóm viết bản của họ, xem có cùng chiều không."},
+    {id:"n-b3vector", t:"Vector cùng chiều: ba đội ngũ A, B, C", tag:"Hình ảnh chốt", dia:"vector",
+     sum:"Cùng số người, cùng quãng đường — đội ngũ càng cùng chiều thì càng về đích sớm. Đây là hình ảnh trực quan nhất của cả buổi học.",
+     tbl:{h:["Đội ngũ","Mức độ cùng chiều","Đến đích sau"],r:[
+      ["A","Các vector phân tán, nhiều người đi ngược chiều — góc lệch lớn","12 tháng"],
+      ["B","Đã bớt phân tán, phần lớn hướng về phía trước","9 tháng"],
+      ["C","Gần như tất cả cùng một chiều — góc lệch nhỏ nhất","6 tháng"]]},
+     pts:["Hai đòn bẩy làm hẹp góc lệch: <b>Năng lực Lãnh đạo</b> và <b>Năng lực Văn hoá</b>.",
+      "Khi tầm nhìn cá nhân phù hợp với tầm nhìn tổ chức: nhân viên thấy rõ ý nghĩa trong công việc · nâng cao gắn kết nội tại, tinh thần tự giác và trách nhiệm · tăng hiệu suất và sự gắn bó lâu dài."],
+     pts2:["<b>Khi giá trị văn hoá cá nhân khác với tổ chức:</b> việc cần làm là nâng văn hoá cá nhân của người ta lên. Không phải họ thấp, mà là họ đang <b>khác</b> với mình. Phải giúp họ. Việc này đòi hỏi kiên nhẫn và tinh tế."],
+     app:"Cùng 20 người, Light Team có thể về đích trong 6 tháng hoặc 12 tháng — khác nhau chỉ ở góc lệch. Mỗi lần một bạn không hiểu vì sao mình làm việc này, góc lệch rộng thêm một chút."}
+   ]},
+   {id:"b3p3", t:"Phần 3 · Hướng tới sự phát triển bền vững",
+    detail:{sum:"Cá nhân giỏi và đội ngũ cùng chiều mới giải quyết được hôm nay. Muốn đi đường dài còn cần ba thứ nữa: sự gắn kết, an toàn tâm lý đi kèm lòng can đảm, và văn hoá đổi mới."},
+    nodes:[
+    {id:"n-b3gank", t:"Bốn đòn bẩy thúc đẩy gắn kết", tag:"Bảng tra", dia:"engage4",
+     sum:"Mức độ gắn kết được nêu trong buổi học: thế giới khoảng 20%, Việt Nam chỉ tầm 12%. Người lãnh đạo tác động được vào bốn đòn bẩy.",
+     tbl:{h:["Đòn bẩy","Nội dung"],r:[
+      ["1 · Promote Purpose — Nhấn mạnh Mục đích","Kết nối đóng góp cá nhân với “Sứ mệnh chung”"],
+      ["2 · Invest in Development — Đầu tư Phát triển","Xoá bỏ sự đình trệ; tập trung đào tạo đội ngũ Quản lý cấp trung (Front-line Managers)"],
+      ["3 · Build Trust — Xây dựng Lòng tin","Giao tiếp chân thành và phản hồi thường xuyên để xoá bỏ khoảng cách"],
+      ["4 · Model Self-Renewal — Làm gương Tái tạo Năng lượng","Cân bằng cuộc sống – công việc, phòng chống cạn kiệt (burnout) và thúc đẩy sáng tạo"]]},
+     pts2:["<b>Về đòn bẩy 2:</b> coi trọng và đầu tư nhiều cho đội ngũ cấp trung — đây chính là cầu nối giữa ban lãnh đạo với toàn thể nhân viên.",
+      "<b>Về đòn bẩy 3:</b> đây là thách thức với mỗi người. Trước khi nhận ra, ai cũng thấy “không tin mới là khôn ngoan”. Không những không tin là sai, mà việc của người lãnh đạo còn là phải <b>làm cho những người khác tin nhau</b>."],
+     app:"Bốn trưởng nhóm squad của Light Team chính là front-line managers — đòn bẩy 2 nói thẳng: đầu tư vào họ trước, không phải vào bạn sale mới."},
+    {id:"n-b3uythac", t:"Uỷ thác khác phân công ở đâu", tag:"Ghi chép lớp",
+     sum:"Một phân biệt nhỏ nhưng quyết định ai chịu trách nhiệm khi có sự cố. Nội dung này chỉ có trong ghi chép lớp, không có trên slide.",
+     tbl:{h:["Cách giao","Giao cái gì","Ai chịu trách nhiệm nếu làm sai"],r:[
+      ["Uỷ thác","Giao cho người khác việc CỦA MÌNH","MÌNH chịu trách nhiệm"],
+      ["Phân công","Giao cho người khác việc CỦA HỌ","HỌ chịu trách nhiệm"]]},
+     app:"Anh nhờ một bạn đi gặp khách VIP thay anh — đó là uỷ thác, hỏng thì anh chịu. Anh giao chỉ tiêu tháng cho trưởng nhóm — đó là phân công, hụt thì họ chịu. Nói rõ trước là loại nào thì sau đỡ tranh cãi."},
+    {id:"n-b3antoan", t:"An toàn tâm lý — chất men gắn kết", tag:"Định nghĩa",
+     sum:"Định nghĩa của Dr Amy Edmondson — người đưa khái niệm này vào quản trị hiện đại.",
+     pts:["<i>“Psychological safety isn't about being nice. It's about giving candid feedback, openly admitting mistakes and learning from each other.”</i>",
+      "An toàn tâm lý <b>không phải</b> là chỉ cần đối xử tử tế với nhau; mà đó là việc sẵn sàng đưa ra những <b>phản hồi thẳng thắn</b>, <b>cởi mở thừa nhận sai sót</b> và <b>cùng nhau học hỏi</b>. — Dr Amy Edmondson"],
+     app:"Team dễ chịu với nhau, không ai nói nặng ai — đó chưa phải an toàn tâm lý. An toàn tâm lý là bạn sale dám nói thẳng ca này em làm hỏng ở bước nào mà không sợ bị chì chiết."},
+    {id:"n-b34mien", t:"Bốn vùng hoạt động của an toàn tâm lý", tag:"Bảng tra",
+     sum:"The 4-Domains of Psychological Safety — bốn mặt của an toàn tâm lý trong một tổ chức.",
+     tbl:{h:["Vùng","Nội dung"],r:[
+      ["Thái độ với rủi ro và thất bại · Attitude to Risk and Failure","Cả công ty có một thái độ giống nhau với rủi ro và thất bại"],
+      ["Nói chuyện cởi mở · Open Conversation","Bao gồm cả cuộc nói chuyện khó khăn — tức là nói chuyện khiến người ta phật lòng"],
+      ["Sẵn lòng giúp đỡ người khác · Willingness to Help","Mọi người sẵn lòng giúp đỡ nhau"],
+      ["Dung hợp và đa dạng · Inclusion & Diversity","Không phân biệt giới tính, vùng miền, tôn giáo, học vị. Tất cả đều được tôn trọng, ghi nhận và mời gọi tham gia làm"]]},
+     pts2:["Có bốn ô, làm từng ô. Bốn ô có liên đới với nhau, <b>không bắt buộc phải làm cái nào trước</b>.",
+      "<b>Ví dụ Google:</b> Google áp dụng an toàn tâm lý chuẩn tới mức nhân viên từng dám bỏ ra tới 16 tiếng một ngày để làm; công ty xây luôn dãy phòng ngủ, xây luôn bếp và phòng ăn. Cuối năm, Google còn thưởng cho <b>thất bại có ý nghĩa nhất</b> trong năm."],
+     app:"Ô dễ làm nhất với Light Team là “sẵn lòng giúp đỡ”: quy ước ai có khách khó thì đăng lên nhóm, ai rảnh thì vào đỡ — và người đỡ được ghi nhận công khai."},
+    {id:"n-b3psafe", t:"Ma trận An toàn tâm lý × Trách nhiệm", tag:"Bảng tra", dia:"psafe",
+     sum:"An toàn tâm lý không đi một mình. Đặt cạnh trục trách nhiệm và hiệu quả công việc thì ra bốn vùng — chỉ một trong bốn là chỗ nên đưa đội ngũ vào.",
+     tbl:{h:["Vùng","Toạ độ","Biểu hiện"],r:[
+      ["Vô cảm · Apathy Zone","An toàn tâm lý thấp · Trách nhiệm thấp","Nhân viên thụt lùi lại, vô cảm, đơ ra"],
+      ["Thoải mái · Comfort Zone","An toàn tâm lý cao · Trách nhiệm thấp","An toàn tâm lý cao nhưng đòi hỏi trách nhiệm thấp thì việc đó không có nhiều giá trị"],
+      ["Lo lắng · Anxiety Zone","An toàn tâm lý thấp · Trách nhiệm cao","Việc đòi hỏi trách nhiệm nhiều nhưng an toàn tâm lý thấp thì ai làm cũng lo lắng"],
+      ["Học hỏi · Learning Zone","An toàn tâm lý cao · Trách nhiệm cao","Công việc đòi hỏi hiệu quả và trách nhiệm cao, đồng thời nhân viên vẫn thấy có sự an toàn tâm lý"]]},
+     pts:["<b>Việc của người lãnh đạo:</b> xây an toàn tâm lý · đo lường được sự học hỏi ở mỗi dự án · làm sao cho nhân viên <b>đua nhau đi vào Vùng học hỏi</b>."],
+     pts2:["An toàn tâm lý luôn đi <b>song song</b> với trách nhiệm và hiệu quả công việc — không phải để đánh đổi."],
+     app:"Team dễ chịu mà chỉ tiêu thấp là Comfort Zone — vui nhưng không ra tiền. Chỉ tiêu cao mà sợ sếp là Anxiety Zone — ra tiền vài tháng rồi nghỉ việc. Đích là chỉ tiêu cao mà dám nói thật."},
+    {id:"n-b3candam", t:"An toàn tâm lý và lòng can đảm — hai mặt đồng tiền", tag:"Cặp đôi",
+     sum:"Công ty xây an toàn tâm lý là một nửa. Nửa còn lại phải đến từ phía nhân viên.",
+     pts:["<i>“Psychological safety and courage are simply two sides of the same (immensely valuable) coin. Both are — and will continue to be — needed in a complex and uncertain world.”</i> — Dr Amy Edmondson",
+      "Sự an toàn tâm lý và Lòng can đảm là hai mặt của đồng tiền. Cả hai đều rất cần thiết, và tiếp tục sẽ rất cần thiết trong một thế giới phức tạp và nhiều biến động."],
+     pts2:["Nếu công ty lo hết mà nhân viên không có lòng can đảm thì cũng vô ích. Ngược lại, nhân viên có can đảm mà thò đầu ra thấy không được thì lại không ổn.",
+      "Công ty thấy ai can đảm thì phải <b>biến người đó thành đốm da báo</b> — tô vẽ con báo từng ô một: có ai thì gầy dựng lên và cho làm gương. (Ghi chép lớp ghi tên chiến thuật này là “Leo Spatking” — giữ nguyên theo ghi chép.)",
+      "<i>“Courage is the first of human qualities because it is the quality which guarantees the others.”</i> — Can đảm là phẩm chất phải có đầu tiên của con người, vì nó bảo đảm cho các phẩm chất khác. (Aristotle)",
+      "An toàn tâm lý phát triển khi <b>mọi người đều có tiếng nói và cùng chịu trách nhiệm</b>."],
+     app:"Bạn nào trong Light Team dám nói ngược lại anh trong họp mà nói có lý — đó là đốm da báo đầu tiên. Khen công khai, giao thêm quyền, để người khác thấy nói thật thì được gì."},
+    {id:"n-b3google", t:"Project Aristotle — yếu tố số 1 ở Google", tag:"Nghiên cứu",
+     sum:"Kết quả nghiên cứu của Google về nhóm làm việc hiệu quả: an toàn tâm lý đứng vị trí số 1, trên cả Dependability.",
+     pts:["<b>Sự an toàn tâm lý:</b> các thành viên trong nhóm cảm thấy an toàn khi nhận những việc có nguy cơ, không ngại thẳng thắn với nhau."],
+     app:"Không phải người giỏi nhất làm nên nhóm mạnh nhất. Google đo rồi: cái quyết định là nhóm đó có dám nói thật với nhau không."},
+    {id:"n-b3innov", t:"Tháp Innovation và tư duy đổi mới", tag:"Mô hình", dia:"innov",
+     sum:"100 ý kiến khác biệt → 10 sáng tạo đã được thử → 1 phát minh. Different Ideas → Creativities → Innovation.",
+     pts:["<b>Câu hỏi then chốt:</b> tại sao ai cũng có ý kiến khác biệt, mà 100 công ty mới có 10 công ty sáng tạo, và chỉ 1 công ty phát minh?",
+      "<b>Bởi vì thiếu Trust – Psychological Safety.</b> Đổi mới, phát minh là tổng hợp từ những ý kiến khác nhau, tư duy khác nhau. Và thay đổi đột phá có thể đến từ những cải tiến nhỏ.",
+      "Có 10 thử nghiệm mới có 1 thành công."],
+     pts2:["<b>Làm sao thúc đẩy tư duy đổi mới:</b> giúp mọi người <b>thách thức tình trạng hiện tại</b> (challenge the status quo) — đừng thoả mãn với hiện tại. Những bạn có kỹ năng cao hơn thách thức sẽ tự nghĩ ra và đề xuất những việc khiến bản thân bớt chán.",
+      "Xây môi trường an toàn tâm lý.",
+      "Trao quyền cho đội ngũ sáng tạo, thử nghiệm — thử và sai.",
+      "<i>“What got you here won't get you there.”</i> — Điều đã giúp bạn thành công trong quá khứ sẽ không tiếp tục giúp bạn thành công trong tương lai. (Marshall Goldsmith). Lý do rất đơn giản: môi trường thay đổi rất nhanh và rất nhiều."],
+     app:"Cách bán hàng đưa anh tới hôm nay chưa chắc đưa anh tới 2027. Mỗi tháng cho team thử một cách tiếp cận khách mới, chấp nhận 9 cách hỏng để tìm 1 cách chạy."},
+    {id:"n-b3benvung", t:"Hướng đến kết quả bền vững", tag:"Nguyên tắc",
+     sum:"Ba nguyên tắc để đổi mới không dừng ở ý tưởng, và vai trò giữ cân bằng của người lãnh đạo.",
+     pts:["<b>Từ ý tưởng đến hành động:</b> chuyển hoá đổi mới thành sáng kiến có giá trị thực tiễn và <b>đo lường được</b>.",
+      "<b>Kết hợp hiệu quả và sáng tạo:</b> cân bằng giữa <b>exploration</b> (tìm tòi cái mới) và <b>exploitation</b> (tối ưu hoá cái hiện có).",
+      "<b>Gắn với mục tiêu chiến lược:</b> mọi sáng kiến đều phục vụ cho mục tiêu dài hạn — tăng trưởng, hiệu suất hoặc tạo khác biệt trên thị trường."],
+     pts2:["Người lãnh đạo cần <b>giữ cân bằng</b> giữa đổi mới cho mục tiêu dài hạn và duy trì hiệu quả ngắn hạn, để tổ chức vừa tiến bộ vừa bền vững.",
+      "<b>Ví dụ công ty game:</b> làm ra 10 trò mới có 1 trò kiếm được tỷ đô. Vậy nên giữ để khai thác trò đang có, hay đổ tiền khai thác cái mới? Câu trả lời là phải có khả năng <b>kết hợp cả hai</b>.",
+      "<i>“Innovation is the fuel for growth. When a company runs out of innovation, it runs out of growth.”</i> — Đổi mới sáng tạo là nhiên liệu của sự tăng trưởng. Khi một doanh nghiệp không còn đổi mới nữa, doanh nghiệp ấy cũng không thể tăng trưởng. (Gary Hamel)"],
+     app:"Exploitation của Light Team là dự án đang bán chạy — vắt cho hết. Exploration là kênh TikTok và cách bán mới — chưa ra tiền ngay nhưng là doanh thu 2027. Bỏ vế nào cũng chết, chỉ khác là chết sớm hay chết muộn."}
+   ]}]},
 
 { id:"b4", t:"Buổi 04 — sắp cập nhật", color:"var(--rose)", key:"rose", sub:"Chờ tài liệu",
   detail:{sum:"Khung Buổi 04 đã sẵn sàng. Buổi cuối thường là buổi tổng hợp và cam kết hành động — sẽ nối thẳng vào phần Ứng dụng của bản đồ này.",
@@ -1018,7 +1280,19 @@ const CROSS = {
    pts:["B1 · 3.1 Agility (nghĩ và làm vừa nhanh vừa đúng) → B2 · Phần 3: nhà lãnh đạo hiệu quả cần linh hoạt và điều chỉnh bản thân theo từng tình huống.","Cùng một tinh thần: không có một cách làm đúng cho mọi người, mọi việc."]},
   {id:"x6", t:"Đa thế hệ → Chẩn đoán D1–D4", tag:"B1 ↔ B2",
    sum:"Hiểu thế hệ cho biết động lực chung; chẩn đoán D cho biết cần gì ngay bây giờ, ở việc này.",
-   pts:["Thế hệ là bối cảnh nền, D là trạng thái theo từng nhiệm vụ. Đừng dùng thế hệ để dán nhãn năng lực."]}
+   pts:["Thế hệ là bối cảnh nền, D là trạng thái theo từng nhiệm vụ. Đừng dùng thế hệ để dán nhãn năng lực."]},
+  {id:"x-b3a", t:"Cái tôi (B1) → Lòng can đảm & An toàn tâm lý (B3)", tag:"B1 ↔ B3",
+   sum:"Cái tôi làm người ta không dám nhận sai; an toàn tâm lý chỉ dựng được khi đủ nhiều người hạ được cái tôi xuống.",
+   pts:["B1 · Cái tôi theo Freud và bốn tác hại → B3 · An toàn tâm lý là cởi mở thừa nhận sai sót, không phải đối xử tử tế.","EQ càng cao thì càng phân biệt được ranh giới tinh tế — B3 định nghĩa EQ chính là khả năng phân biệt."]},
+  {id:"x-b3b", t:"Herzberg (B2) → Autonomy · Mastery · Purpose (B3)", tag:"B2 ↔ B3",
+   sum:"Motivator của Herzberg và ba yếu tố của Daniel Pink nói cùng một chuyện bằng hai ngôn ngữ.",
+   pts:["Sự trao quyền và sự sáng tạo (Motivator ở B2) chính là Autonomy ở B3. Sự thành công và thăng tiến chính là Mastery.","Hygiene factor chỉ chặn bất mãn — tương ứng Motivation 2.0 cây gậy củ cà rốt. Muốn qua trần phải lên Motivation 3.0."]},
+  {id:"x-b3c", t:"D1–D4 và SLII (B2) → Flow Channel & Nguyên tắc Peter (B3)", tag:"B2 ↔ B3",
+   sum:"Chẩn đoán cấp độ phát triển ở B2 chính là chẩn đoán vị trí của người đó trong flow channel ở B3.",
+   pts:["Nhân viên vừa lên chức rơi vào vùng Lo lắng (B3) chính là ca D1–D2 theo việc mới (B2) — cần S1 Directing chứ không phải để tự bơi.","Nhân viên thấy Chán vì kỹ năng vượt thách thức chính là D4 bị giao việc quá dễ — cần Delegating và thách thức mới."]},
+  {id:"x-b3d", t:"Ba vòng lãnh đạo (B2) → Ba tầng của Buổi 03", tag:"B2 ↔ B3",
+   sum:"Lãnh đạo bản thân → lãnh đạo người khác → lãnh đạo tổ chức, chính là ba tầng hiểu người → cá nhân giỏi → tổ chức bền vững.",
+   pts:["Vòng trong (bản thân) ↔ Phần 1 hiểu động lực con người và tầm nhìn sứ mệnh cá nhân.","Vòng giữa (người khác) ↔ Phần 2 tam giác Pressure–Skills–Motivation.","Vòng ngoài (tổ chức) ↔ Phần 3 gắn kết, an toàn tâm lý, đổi mới."]},
  ]}]
 };
 
@@ -1049,6 +1323,30 @@ const APPLY_BRANCH = {
 
 /* Bộ câu hỏi ôn tập của hai buổi */
 const QUIZ = [
+ {s:"Buổi 03", q:"Lễ trị và Pháp trị khác nhau ở giả định nào về bản chất con người?", a:"Lễ trị (Khổng – Mạnh) giả định “nhân chi sơ tính bản thiện” — chỉ cái đúng thì người ta tự theo. Pháp trị (Tuân – Hàn Phi) giả định “tính bản ác” — phải thưởng phạt công minh người ta mới theo.", n:"n-b3thienac"},
+ {s:"Buổi 03", q:"Pháp quyền khác Pháp trị ở điểm cốt lõi nào? Trong doanh nghiệp nó có tên là gì?", a:"Pháp trị: người trên nằm TRÊN pháp luật, người dưới nằm DƯỚI. Pháp quyền: tất cả đều nằm dưới pháp luật. Trong tổ chức, pháp quyền có tên là CHÍNH SÁCH và QUY TRÌNH.", n:"n-b3lephap"},
+ {s:"Buổi 03", q:"Vì sao câu nói của Pascal quan trọng với khoa học quản lý con người?", a:"“Con người chỉ là cây sậy yếu ớt nhất, nhưng là cây sậy biết suy nghĩ.” Câu này làm giới cai trị châu Âu chấn động vì hiểu ra: dù con người yếu ớt, họ biết suy nghĩ — nên phải quản lý một cách đúng đắn, bài bản.", n:"n-b3pascal"},
+ {s:"Buổi 03", q:"Kể tên ba hệ điều hành động lực theo Daniel Pink.", a:"Motivation 1.0 — Essential Survival Needs (sinh tồn). Motivation 2.0 — Carrot and Stick (cây gậy và củ cà rốt). Motivation 3.0 — Autonomy, Mastery, Purpose (động lực nội tại).", n:"n-b3motos"},
+ {s:"Buổi 03", q:"Vì sao Mastery có mặt trái? Dopamine liên quan gì ở đây?", a:"Quick win và cảm giác ngày càng giỏi chính là dopamine. Nhưng dopamine ngắn hạn và dễ gây nghiện: thành công rồi mà tương lai không có thành công kế tiếp thì thấy chán đời. Phải hiểu để không đòi thành công sai thời điểm và không bị phụ thuộc.", n:"n-b3amp"},
+ {s:"Buổi 03", q:"Ba vùng giao thoa Kỷ luật – Dấn thân – Khát khao nằm giữa cặp yếu tố nào?", a:"Kỷ luật = Purpose × Mastery. Dấn thân = Mastery × Autonomy. Khát khao = Autonomy × Purpose. Vùng chính giữa hội đủ cả ba mới là Động lực nội tại.", n:"n-b34vung"},
+ {s:"Buổi 03", q:"Vì sao cách của Daniel Pink phủ được cả hai nhóm người mà Lễ và Pháp phải chia đôi?", a:"Vì đây là cách trung tính ở giữa, không nghiêng về phía thiện hay bất thiện của con người. Khổng Tử phủ ~70% nhóm hướng thiện, Hàn Phi Tử phủ ~30% còn lại; Daniel Pink tác động được cả hai cùng lúc.", n:"n-b33truong"},
+ {s:"Buổi 03", q:"Vì sao tam giác Pressure – Skills – Motivation bắt buộc phải là tam giác đều?", a:"Trong các đa giác cùng chu vi, đa giác đều có diện tích lớn nhất. Cùng một lượng vật liệu, muốn diện tích (hiệu quả) lớn nhất thì ba góc phải đều nhau. Lệch một góc là diện tích tụt hẳn.", n:"n-b3psm"},
+ {s:"Buổi 03", q:"Cho hai ví dụ áp lực cần thiết và hai ví dụ áp lực không cần thiết.", a:"Cần thiết: chỉ tiêu cao · họp thường xuyên · đo lường KPI chính xác. Không cần thiết: chỉ tiêu quá cao · họp quá thường xuyên · đo lường KPI chi li tiểu tiết · ép tốc độ vượt quá năng lực thật của đội.", n:"n-b3apluc"},
+ {s:"Buổi 03", q:"Ba bậc EQ phân biệt được những thứ gì?", a:"EQ trung bình: phân biệt cái KHÁC NHAU (can đảm ↔ nhút nhát). EQ cao: phân biệt cái GẦN GIỐNG NHAU (tiết kiệm ↔ keo kiệt). EQ rất cao: phân biệt cái RẤT GIỐNG NHAU — mức cần để biết ranh giới áp lực cần thiết và không cần thiết.", n:"n-b3eq3"},
+ {s:"Buổi 03", q:"Nguyên tắc Peter phát biểu điều gì? Cơ chế nào đẩy người ta tới đó?", a:"Trong một tổ chức, mọi người có xu hướng đạt tới sự bất tài. Cơ chế: đang ở flow channel là giỏi → được lên chức → nhảy sang vùng lo lắng → cày rồi về flow → lại được lên chức. Vì khi được cho lên chức, người ta không từ chối.", n:"n-b3flow"},
+ {s:"Buổi 03", q:"Training và Coaching khác nhau ở tỷ lệ nào và ai làm phần lớn công việc?", a:"Training: 50% lý thuyết – 50% thực hành, dạy theo lớp. Coaching: 90% thực hành, nhân viên làm 90%, sếp đi cùng vào chính công việc đó để quan sát, nhận xét, chỉ điểm.", n:"n-b3traincoach"},
+ {s:"Buổi 03", q:"Công thức thành quả đội ngũ là gì? Vì sao là phép nhân chứ không phải phép cộng?", a:"Thành quả Đội ngũ = Thành quả cá nhân × Số nhân viên. Vì là phép nhân nên thành quả cá nhân yếu thì quy mô lớn cũng không cứu được — nhân một số nhỏ với số lớn vẫn ra số nhỏ.", n:"n-b3doingu"},
+ {s:"Buổi 03", q:"Ba góc cạnh của một con người phù hợp với tổ chức là gì?", a:"Sứ mệnh có ý nghĩa và khớp với sứ mệnh công ty · Được hỗ trợ đủ nguồn lực (nhân lực, tài lực, vật lực, thông tin, thời gian) · Môi trường lành mạnh. Thiếu một góc thì thành tích đội nhóm không đứng được lâu.", n:"n-b33goc"},
+ {s:"Buổi 03", q:"Tầm nhìn cá nhân và Sứ mệnh cá nhân khác nhau chỗ nào?", a:"Tầm nhìn là hình ảnh lý tưởng mình muốn hướng tới trong tương lai. Sứ mệnh là lý do tồn tại, giá trị mình muốn tạo ra thông qua hành động và công việc.", n:"n-b3tamnhin"},
+ {s:"Buổi 03", q:"Ba đội ngũ A, B, C về đích sau bao lâu? Hai đòn bẩy nào làm hẹp góc lệch?", a:"A (vector phân tán) 12 tháng · B (bớt phân tán) 9 tháng · C (gần như cùng chiều) 6 tháng. Hai đòn bẩy làm hẹp góc lệch: Năng lực Lãnh đạo và Năng lực Văn hoá.", n:"n-b3vector"},
+ {s:"Buổi 03", q:"Bốn đòn bẩy thúc đẩy gắn kết là gì? Đòn bẩy nào nhắm vào quản lý cấp trung?", a:"Promote Purpose · Invest in Development · Build Trust · Model Self-Renewal. Đòn bẩy 2 (Invest in Development) nhắm thẳng vào đội ngũ Front-line Managers — cầu nối giữa ban lãnh đạo và toàn thể nhân viên.", n:"n-b3gank"},
+ {s:"Buổi 03", q:"Uỷ thác khác phân công ở chỗ nào? Ai chịu trách nhiệm trong mỗi trường hợp?", a:"Uỷ thác là giao cho người khác việc CỦA MÌNH — mình chịu trách nhiệm. Phân công là giao cho người khác việc CỦA HỌ — họ chịu trách nhiệm.", n:"n-b3uythac"},
+ {s:"Buổi 03", q:"An toàn tâm lý theo Amy Edmondson có phải là đối xử tử tế với nhau không?", a:"Không. Đó là sẵn sàng đưa ra phản hồi thẳng thắn, cởi mở thừa nhận sai sót và cùng nhau học hỏi — chứ không phải chỉ cần tử tế với nhau.", n:"n-b3antoan"},
+ {s:"Buổi 03", q:"Bốn vùng hoạt động của an toàn tâm lý là gì?", a:"Thái độ với rủi ro và thất bại · Nói chuyện cởi mở (gồm cả cuộc nói chuyện khó khăn) · Sẵn lòng giúp đỡ người khác · Dung hợp và đa dạng. Bốn ô liên đới nhau, không bắt buộc làm cái nào trước.", n:"n-b34mien"},
+ {s:"Buổi 03", q:"Bốn ô của ma trận An toàn tâm lý × Trách nhiệm. Ô nào là đích đến?", a:"Vô cảm (thấp – thấp) · Thoải mái (cao – thấp) · Lo lắng (thấp – cao) · Học hỏi (cao – cao). Đích đến là Vùng học hỏi — Learning Zone.", n:"n-b3psafe"},
+ {s:"Buổi 03", q:"Vì sao an toàn tâm lý và lòng can đảm phải đi đôi với nhau?", a:"Hai mặt của cùng một đồng tiền. Công ty lo hết mà nhân viên không can đảm thì vô ích; nhân viên can đảm mà thò đầu ra thấy không an toàn thì cũng không ổn. Thấy ai can đảm thì gầy dựng lên làm gương — biến thành đốm da báo.", n:"n-b3candam"},
+ {s:"Buổi 03", q:"Tháp Innovation có mấy tầng? Tầng móng là gì và vì sao?", a:"100 ý kiến khác biệt → 10 sáng tạo đã thử → 1 phát minh. Tầng móng là Trust và Psychological Safety. Thiếu móng thì ý kiến khác biệt không bao giờ lên tới phát minh — đó là lý do 100 công ty mới có 10 sáng tạo, 1 phát minh.", n:"n-b3innov"},
+ {s:"Buổi 03", q:"Exploration và exploitation khác nhau thế nào? Vì sao phải cân bằng cả hai?", a:"Exploration là tìm tòi cái mới — doanh thu tương lai. Exploitation là tối ưu hoá cái hiện có đã qua chứng minh. Ví dụ công ty game: 10 trò mới có 1 trò tỷ đô. Người lãnh đạo phải giữ cân bằng để tổ chức vừa tiến bộ vừa bền vững.", n:"n-b3benvung"},
  {s:"Buổi 01", q:"BANI là viết tắt của những chữ nào, và mỗi chữ đòi hỏi năng lực đối ứng gì?", a:"Brittle – Anxious – Non-linear – Incomprehensible. Đối ứng: kiên cường · đồng cảm và tỉnh thức · hiểu và thích nghi bối cảnh · trực giác tốt và minh bạch cao.", n:"n-bani"},
  {s:"Buổi 01", q:"PAID mô tả điều gì? Vì sao “Distracted” ngày nay khó gỡ hơn ngày xưa?", a:"PAID mô tả biến động nhân tâm: Pressured – Always on – Information overload – Distracted. Xưa phân tâm bởi nỗi sợ, nay phân tâm bởi niềm vui nên khó gỡ hơn nhiều.", n:"n-paid"},
  {s:"Buổi 01", q:"Ba nhóm thách thức lớn từ 2026 trở đi là gì?", a:"Khủng hoảng bên ngoài · tác động của AI lên nhân loại · khủng hoảng hiện sinh mới.", n:"n-3thach"},
@@ -1218,7 +1516,7 @@ ${[["A","12 tháng",18,"rgba(208,142,134,.55)",[-22,14,-8,20,4,-16,-12,6]],["B",
  box(10,y,250,44,"rgba(244,233,216,.04)","rgba(244,233,216,.16)",8)+
  rots.map((r,j)=>`<g transform="translate(${28+j*28},${y+22}) rotate(${r})"><path d="M-9 0 h16 M3 -4 l4 4 -4 4" stroke="${col}" stroke-width="1.8" fill="none" stroke-linecap="round"/></g>`).join("")+
  txt(268,y+20,"Công ty "+k,10,P,"start",600)+txt(268,y+34,t,9.5,GL,"start")).join("")}
-${txt(10,180,"A→B cần Năng lực Lãnh đạo (xoay 30–50°) · B→C cần Năng lực Văn hoá",9.5,M,"start")}</svg>`;
+${txt(8,180,"A→B cần Năng lực Lãnh đạo (xoay 30–50°) · B→C cần Năng lực Văn hoá",9,M,"start")}</svg>`;
 
 D.mehrabian=()=>{
  const seg=[[7,G],[38,GL],[55,J]];let a=-90,p="";
@@ -1287,7 +1585,120 @@ ${[["70%","kỹ năng đổi đến 2030"],["43%","nhân viên kiệt sức"],["
  `<foreignObject x="${x+5}" y="64" width="66" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:8.6px Be Vietnam Pro,sans-serif;color:${M};text-align:center;line-height:1.25">${s[1]}</div></foreignObject>`}).join("")}
 ${txt(170,120,"Bức tranh thế giới công việc hiện tại",9.5,M)}</svg>`;
 
-const CAPTIONS={bani:"BANI — bốn mặt của thế giới bất định",paid:"PAID — biến động nhân tâm",ttt:"Thân – Trí – Tâm",sbnrr:"SBNRR — năm bước trong khoảng trống",zone:"Ba vùng trạng thái và Resilient Zone",iceberg:"Mô hình tảng băng của Freud",lucCan:"Vòng vận hành của cái tôi",selfless:"Ma trận Selflessness",hxm:"Human × Machine",pyramid:"Tháp Vision → Culture",rings:"Ba vòng lãnh đạo",herzberg:"Motivator và Hygiene factor",checktrust:"Check – Trust Matrix",trust:"Ba cấp độ hợp tác trên nền Trust",synergy:"The Path to Synergy",slii:"Mô hình SLII — bốn phong cách",dlevels:"Bốn cấp độ phát triển D1 → D4",abc:"Cùng người, cùng tài năng, khác thời gian về đích",mehrabian:"Công thức 7 – 38 – 55",resp:"Bảng trách nhiệm 100%",skillmix:"Tỷ trọng kỹ năng theo cấp bậc",gens:"Bốn thế hệ trong doanh nghiệp",selfaware:"Công thức tự nhận thức",curio:"Curiosity Before Judgement",xy:"Thuyết X đối chiếu Thuyết Y",stats:"Bốn con số nền của khoá học"};
+/* ---- Sơ đồ Buổi 03 ---- */
+D.thienac=()=>`<svg viewBox="0 0 340 168">
+${box(10,12,152,126,"rgba(127,178,160,.1)",J,10)}${box(178,12,152,126,"rgba(208,142,134,.1)",R,10)}
+${txt(86,34,"KHỔNG TỬ · MẠNH TỬ",9.5,J,"middle",700)}${txt(254,34,"TUÂN TỬ · HÀN PHI TỬ",9.5,R,"middle",700)}
+${txt(86,56,"Nhân chi sơ",11,P,"middle",600)}${txt(86,72,"tính bản THIỆN",12,GL,"middle",700)}
+${txt(254,56,"Nhân chi sơ",11,P,"middle",600)}${txt(254,72,"tính bản ÁC",12,GL,"middle",700)}
+${txt(86,94,"Chỉ cái đúng thì tự theo",9,M)}${txt(254,94,"Thưởng phạt mới theo",9,M)}
+${box(28,106,116,24,"rgba(127,178,160,.18)",J,7)}${txt(86,122,"→ LỄ TRỊ",11,J,"middle",700)}
+${box(196,106,116,24,"rgba(208,142,134,.18)",R,7)}${txt(254,122,"→ PHÁP TRỊ",11,R,"middle",700)}
+${txt(170,158,"Hai giả định trái ngược, hai đường lối quản trị",9.5,M)}</svg>`;
+
+D.lephap=()=>`<svg viewBox="0 0 340 158">
+${[["LỄ TRỊ","Mô tả cái đúng","người ta tự theo",8,J],["PHÁP TRỊ","Thưởng phạt","công minh",118,G],["PHÁP QUYỀN","Tất cả nằm DƯỚI","pháp luật",228,PB]].map(([a,b,c,x,col])=>
+ box(x,16,104,74,"rgba(244,233,216,.05)",col,9)+txt(x+52,40,a,11.5,col,"middle",700)+txt(x+52,58,b,9,P)+txt(x+52,72,c,9,P)).join("")}
+${[112,222].map(x=>`<path d="M${x} 53 L${x+14} 53" stroke="${G}" stroke-width="1.2" marker-end=""/><path d="M${x+10} 49 L${x+15} 53 L${x+10} 57" fill="none" stroke="${G}" stroke-width="1.2"/>`).join("")}
+${txt(60,106,"đông người thì",8.5,M)}${txt(60,117,"lễ trị không nổi",8.5,M)}
+${txt(170,106,"nhiều người làm",8.5,M)}${txt(170,117,"quá đà, vì ý riêng",8.5,M)}
+${box(186,126,148,24,"rgba(168,190,210,.14)",PB,7)}${txt(260,142,"Trong tổ chức = CHÍNH SÁCH · QUY TRÌNH",7.2,PB,"middle",600)}</svg>`;
+
+D.motos=()=>`<svg viewBox="0 0 340 156">
+${[["Motivation 1.0","Essential Survival Needs","Sinh tồn: ăn · ngủ · an toàn",12,M],
+   ["Motivation 2.0","Carrot and Stick","Cây gậy và củ cà rốt",58,R],
+   ["Motivation 3.0","Autonomy · Mastery · Purpose","Động lực nội tại",104,J]].map(([a,b,c,y,col])=>
+ box(12,y,316,40,"rgba(244,233,216,.05)",col,9)+txt(24,y+18,a,11,col,"start",700)+txt(24,y+32,b,9,P,"start")+txt(318,y+26,c,9,M,"end")).join("")}
+${txt(170,152,"Ba thế hệ hệ điều hành động lực — Daniel Pink",9.5,M)}</svg>`;
+
+D.amp=()=>`<svg viewBox="0 0 340 206">
+<circle cx="170" cy="78" r="54" fill="rgba(201,162,39,.13)" stroke="${G}" stroke-width="1.1"/>
+<circle cx="132" cy="132" r="54" fill="rgba(127,178,160,.13)" stroke="${J}" stroke-width="1.1"/>
+<circle cx="208" cy="132" r="54" fill="rgba(168,190,210,.13)" stroke="${PB}" stroke-width="1.1"/>
+${txt(170,34,"PURPOSE",11,GL,"middle",700)}${txt(170,48,"Mục đích",9,P)}
+${txt(96,178,"MASTERY",11,J,"middle",700)}${txt(96,191,"Thành thạo",9,P)}
+${txt(246,178,"AUTONOMY",11,PB,"middle",700)}${txt(246,191,"Tự chủ",9,P)}
+${txt(126,92,"Kỷ luật",8.5,GL,"middle",600)}${txt(214,92,"Khát khao",8.5,GL,"middle",600)}
+${txt(170,158,"Dấn thân",8.5,GL,"middle",600)}
+<circle cx="170" cy="116" r="21" fill="rgba(20,4,9,.82)" stroke="${GL}" stroke-width="1.3"/>
+${txt(170,113,"ĐỘNG LỰC",7.4,GL,"middle",700)}${txt(170,123,"NỘI TẠI",7.4,GL,"middle",700)}</svg>`;
+
+D.psm=()=>`<svg viewBox="0 0 340 190">
+<path d="M170 20 L306 158 L34 158 Z" fill="rgba(201,162,39,.09)" stroke="${G}" stroke-width="1.2"/>
+${txt(170,14,"ÁP LỰC · Pressure",10.5,R,"middle",700)}${txt(170,-2,"",9,M)}
+${txt(170,36,"= PHẢI LÀM",8.5,M)}
+${txt(30,172,"KỸ NĂNG · Skills",10.5,PB,"start",700)}${txt(30,185,"= BIẾT LÀM",8.5,M,"start")}
+${txt(310,172,"ĐỘNG LỰC · Motivation",10.5,J,"end",700)}${txt(310,185,"= MUỐN LÀM",8.5,M,"end")}
+<circle cx="170" cy="112" r="26" fill="rgba(20,4,9,.8)" stroke="${GL}" stroke-width="1.3"/>
+${txt(170,109,"HIỆU QUẢ",7.6,GL,"middle",700)}${txt(170,119,"CÁ NHÂN",7.6,GL,"middle",700)}
+${txt(170,148,"Phải là TAM GIÁC ĐỀU — cùng chu vi, đều thì diện tích lớn nhất",8,M)}</svg>`;
+
+D.eq3=()=>`<svg viewBox="0 0 340 168">
+${[["EQ trung bình","phân biệt cái KHÁC NHAU","can đảm ↔ nhút nhát",14,M,150],
+   ["EQ cao","phân biệt cái GẦN GIỐNG","tiết kiệm ↔ keo kiệt",62,G,196],
+   ["EQ rất cao","phân biệt cái RẤT GIỐNG","áp lực cần ↔ không cần",110,GL,242]].map(([a,b,c,y,col,w])=>
+ box(12,y,w,40,"rgba(201,162,39,.09)",col,9)+txt(24,y+17,a,10.5,col,"start",700)+txt(24,y+31,b,8.6,P,"start")+txt(328,y+25,c,8.6,M,"end")).join("")}
+${txt(170,164,"EQ = khả năng phân biệt. Không có công thức chung.",9.5,M)}</svg>`;
+
+D.flow=()=>`<svg viewBox="0 0 340 190">
+${box(34,14,286,132,"rgba(244,233,216,.03)","rgba(201,162,39,.35)",8)}
+<path d="M34 146 L320 14" stroke="${G}" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M34 118 L292 14 L320 14 L320 42 L62 146 L34 146 Z" fill="rgba(201,162,39,.16)" stroke="none"/>
+${txt(112,56,"LO LẮNG · Anxious",9.5,R,"middle",600)}${txt(112,70,"thách thức > kỹ năng",8.2,M)}
+${txt(238,110,"CHÁN · Bored",9.5,PB,"middle",600)}${txt(238,124,"kỹ năng > thách thức",8.2,M)}
+${txt(196,86,"FLOW CHANNEL",9.5,GL,"middle",700)}
+<text x="13" y="80" font-size="8" fill="${M}" text-anchor="middle" font-weight="600" transform="rotate(-90 13 80)" font-family="Be Vietnam Pro,sans-serif">THÁCH THỨC</text>
+${txt(177,160,"KỸ NĂNG",8.5,M,"middle",600)}
+${txt(170,180,"Nguyên tắc Peter: lên chức → nhảy sang Lo lắng → cày → về Flow → lại lên chức",8,M)}</svg>`;
+
+D.t702010=()=>`<svg viewBox="0 0 340 150">
+${[["70%","Học từ chính công việc","thật hằng ngày",8,150,G],
+   ["20%","Học từ","người khác",166,80,J],
+   ["10%","Thầy,","sách",254,78,GL]].map(([a,b,c,x,w,col])=>
+ box(x,18,w,76,"rgba(201,162,39,.1)",col,9)+txt(x+w/2,48,a,19,col,"middle",700)+txt(x+w/2,68,b,8.6,P)+txt(x+w/2,82,c,8.6,P)).join("")}
+${txt(293,110,"↑ lấy phần này ra dùng",8.4,GL,"middle",600)}
+${txt(170,134,"Khi khó nói chuyện nhân sinh quan: đưa nhân viên cho thầy chỉ điểm",9,M)}</svg>`;
+
+D.vector=()=>`<svg viewBox="0 0 340 176">
+${[["A","12 tháng",22,R,[-26,-11,16,-5,30,24,-18]],
+   ["B","9 tháng",130,G,[-10,-4,5,0,8,12,-6]],
+   ["C","6 tháng",238,J,[-3,-1,0,1,2,3,-2]]].map(([n,t,x,col,angs])=>
+ box(x,14,80,104,"rgba(244,233,216,.04)",col,9)
+ +txt(x+40,32,"ĐỘI "+n,10.5,col,"middle",700)
+ +angs.map((a,i)=>{const y=44+i*10,r=a*Math.PI/180;const dx=26*Math.cos(r),dy=26*Math.sin(r);
+   return `<path d="M${x+16} ${y} l${dx} ${dy}" stroke="${col}" stroke-width="1.3" opacity=".85"/>`}).join("")
+ +txt(x+40,134,t,11,GL,"middle",700)).join("")}
+${txt(170,158,"Cùng số người, cùng quãng đường — góc lệch nhỏ thì về đích sớm",9,M)}
+${txt(170,172,"Hai đòn bẩy làm hẹp góc lệch: Năng lực Lãnh đạo · Năng lực Văn hoá",8.6,GL)}</svg>`;
+
+D.psafe=()=>`<svg viewBox="0 0 340 200">
+${box(46,14,138,80,"rgba(168,190,210,.1)",PB,9)}${box(190,14,138,80,"rgba(201,162,39,.2)",GL,9)}
+${box(46,100,138,80,"rgba(183,154,147,.1)",M,9)}${box(190,100,138,80,"rgba(208,142,134,.1)",R,9)}
+${txt(115,44,"THOẢI MÁI",10,PB,"middle",700)}${txt(115,60,"Comfort Zone",8.4,M)}${txt(115,76,"ít giá trị",8.4,P)}
+${txt(259,44,"HỌC HỎI",11,GL,"middle",700)}${txt(259,60,"Learning Zone",8.4,P)}${txt(259,76,"← ĐÍCH ĐẾN",8.6,GL,"middle",700)}
+${txt(115,130,"VÔ CẢM",10,M,"middle",700)}${txt(115,146,"Apathy Zone",8.4,M)}${txt(115,162,"thụt lùi, đơ ra",8.4,P)}
+${txt(259,130,"LO LẮNG",10,R,"middle",700)}${txt(259,146,"Anxiety Zone",8.4,M)}${txt(259,162,"ai làm cũng lo",8.4,P)}
+<text x="16" y="97" font-size="8" fill="${M}" text-anchor="middle" font-weight="600" transform="rotate(-90 16 97)" font-family="Be Vietnam Pro,sans-serif">AN TOÀN TÂM LÝ</text>
+${txt(187,196,"TRÁCH NHIỆM & HIỆU QUẢ CÔNG VIỆC",8,M,"middle",600)}</svg>`;
+
+D.innov=()=>`<svg viewBox="0 0 340 176">
+${[["1 PHÁT MINH","Innovation",110,20,26,GL],
+   ["10 SÁNG TẠO đã thử","Creativities",180,52,26,G],
+   ["100 Ý KIẾN KHÁC BIỆT","Different Ideas",250,84,26,J]].map(([a,b,w,y,h,col])=>
+ box(170-w/2,y,w,h,"rgba(201,162,39,.12)",col,7)+txt(170,y+12,a,9,col,"middle",700)+txt(170,y+22,b,7.6,M)).join("")}
+${box(24,116,292,34,"rgba(168,190,210,.16)",PB,8)}
+${txt(170,131,"TẦNG MÓNG · Trust + Psychological Safety",10,PB,"middle",700)}
+${txt(170,144,"Thiếu móng thì 100 ý kiến không bao giờ lên tới phát minh",8,P)}
+${txt(170,168,"Có 10 thử nghiệm mới có 1 thành công",9,M)}</svg>`;
+
+D.engage4=()=>`<svg viewBox="0 0 340 178">
+${[["1","Promote Purpose","Nhấn mạnh Mục đích",8,10,G],
+   ["2","Invest in Development","Đầu tư Phát triển",174,10,J],
+   ["3","Build Trust","Xây dựng Lòng tin",8,86,GL],
+   ["4","Model Self-Renewal","Làm gương Tái tạo",174,86,PB]].map(([n,a,b,x,y,col])=>
+ box(x,y,158,66,"rgba(244,233,216,.05)",col,9)+txt(x+16,y+28,n,17,col,"start",700)+txt(x+36,y+24,a,9.2,col,"start",600)+txt(x+36,y+40,b,8.6,P,"start")).join("")}
+${txt(170,168,"Gắn kết: thế giới ~20% · Việt Nam ~12%",9.5,M)}</svg>`;
+const CAPTIONS={bani:"BANI — bốn mặt của thế giới bất định",paid:"PAID — biến động nhân tâm",ttt:"Thân – Trí – Tâm",sbnrr:"SBNRR — năm bước trong khoảng trống",zone:"Ba vùng trạng thái và Resilient Zone",iceberg:"Mô hình tảng băng của Freud",lucCan:"Vòng vận hành của cái tôi",selfless:"Ma trận Selflessness",hxm:"Human × Machine",pyramid:"Tháp Vision → Culture",rings:"Ba vòng lãnh đạo",herzberg:"Motivator và Hygiene factor",checktrust:"Check – Trust Matrix",trust:"Ba cấp độ hợp tác trên nền Trust",synergy:"The Path to Synergy",slii:"Mô hình SLII — bốn phong cách",dlevels:"Bốn cấp độ phát triển D1 → D4",abc:"Cùng người, cùng tài năng, khác thời gian về đích",mehrabian:"Công thức 7 – 38 – 55",resp:"Bảng trách nhiệm 100%",skillmix:"Tỷ trọng kỹ năng theo cấp bậc",gens:"Bốn thế hệ trong doanh nghiệp",selfaware:"Công thức tự nhận thức",curio:"Curiosity Before Judgement",xy:"Thuyết X đối chiếu Thuyết Y",stats:"Bốn con số nền của khoá học",thienac:"Hai quan điểm đối lập về bản chất con người",lephap:"Lễ trị → Pháp trị → Pháp quyền",motos:"Ba hệ điều hành động lực — Daniel Pink",amp:"Autonomy · Mastery · Purpose và bốn vùng giao thoa",psm:"Tam giác Áp lực – Kỹ năng – Động lực",eq3:"Ba bậc EQ theo khả năng phân biệt",flow:"Flow Channel và Nguyên tắc Peter",t702010:"Mô hình học tập 70 – 20 – 10",vector:"Ba đội ngũ A, B, C — góc lệch và thời gian về đích",psafe:"Ma trận An toàn tâm lý × Trách nhiệm",innov:"Tháp Innovation và tầng móng Trust",engage4:"Bốn đòn bẩy thúc đẩy gắn kết"};
 
 /* ============================================================
    3. DỰNG CÂY
@@ -1599,7 +2010,7 @@ ${KB}
 </tai_lieu>
 
 Quy tắc:
-- Chỉ trả lời dựa trên tài liệu trên. Nếu câu hỏi nằm ngoài tài liệu, nói rõ phần đó chưa có trong tài liệu (Buổi 03 và 04 chưa cập nhật), rồi mới đưa nhận định chung nếu hữu ích.
+- Chỉ trả lời dựa trên tài liệu trên. Nếu câu hỏi nằm ngoài tài liệu, nói rõ phần đó chưa có trong tài liệu (Buổi 04 chưa cập nhật), rồi mới đưa nhận định chung nếu hữu ích.
 - Luôn nêu tên mục hoặc buổi mà câu trả lời dựa vào, ví dụ (Buổi 02 · Check – Trust Matrix).
 - Ngắn gọn, có cấu trúc, tối đa khoảng 250 từ trừ khi được yêu cầu dài hơn.
 - Không bịa số liệu. Dùng đúng con số trong tài liệu.`;
@@ -1848,7 +2259,7 @@ var AICFG_KEY="lm2026:ai";
    De trong dong nay thi ban do chay tra cuu offline nhu cu, va ai
    muon dung AI thi tu dan key rieng vao bang cai dat tren may ho.
    ================================================================== */
-var AI_KEY_SAN="sk-8325d07d68b8479a871d5658978b60a4";
+var AI_KEY_SAN="";
 
 var AI_DEF={base:"https://api.deepseek.com",model:"deepseek-v4-pro",key:AI_KEY_SAN,on:true,maxtok:6000};
 var AI_MODELS=[
@@ -2108,9 +2519,9 @@ function aiPaint(){
    (aiHasKey()?"Bấm để bật lại suy luận AI":"Bấm bánh răng để dán key - bản đồ sẽ suy luận thay vì chỉ tra từ khoá");
   var sub=document.getElementById("sub"+n);
   if(sub)sub.textContent=on
-   ?(n===1?"Suy luận trên 73 mục của bản đồ — có mạng thì hỏi sâu, mất mạng vẫn tra được"
+   ?(n===1?"Suy luận trên 106 mục của bản đồ — có mạng thì hỏi sâu, mất mạng vẫn tra được"
           :"Mô tả tình huống, bản đồ soi bằng khung của khoá rồi đề xuất việc làm được")
-   :(n===1?"Tra thẳng trong 73 mục của bản đồ — chạy offline, không cần mạng"
+   :(n===1?"Tra thẳng trong 106 mục của bản đồ — chạy offline, không cần mạng"
           :"Mô tả tình huống, bản đồ chỉ ra khung soi và việc làm được — chạy offline");
  });
 }
@@ -2253,7 +2664,7 @@ chat2.add("assistant","Anh mô tả một tình huống đang gặp ở Light Te
    5. ÔN TẬP & LỘ TRÌNH
    ============================================================ */
 document.getElementById("quizwrap").innerHTML=`
- <h2 class="lead">24 câu tự ôn tập</h2>
+ <h2 class="lead">${QUIZ.length} câu tự ôn tập</h2>
  <p class="dek">Tự trả lời trước khi lật thẻ — đúng cách khoá học yêu cầu. Chạm vào thẻ để xem đáp án, chạm “Mở mục gốc” để đọc lại phần tương ứng trên bản đồ.</p>
  <div class="grid">${QUIZ.map((q,i)=>`
   <div class="card qcard" data-i="${i}">
@@ -2277,11 +2688,11 @@ function drawProgress(){
   <h2 class="lead" style="margin-top:30px;font-size:22px">Cách dùng bản đồ này</h2>
   <div class="grid" style="margin-top:12px">
    <div class="card"><h3>Học lần đầu</h3><p>Đi từ trái sang phải theo nhánh Buổi 01 → Buổi 02. Mỗi mục có sơ đồ minh hoạ và bảng tra gốc từ bài giảng.</p></div>
-   <div class="card"><h3>Ôn nhanh trước kiểm tra</h3><p>Vào tab Ôn tập, tự trả lời 24 câu rồi lật thẻ. Câu nào sai thì bấm “Mở mục gốc” để đọc lại đúng chỗ.</p></div>
+   <div class="card"><h3>Ôn nhanh trước kiểm tra</h3><p>Vào tab Ôn tập, tự trả lời 48 câu rồi lật thẻ. Câu nào sai thì bấm “Mở mục gốc” để đọc lại đúng chỗ.</p></div>
    <div class="card"><h3>Tra cứu giữa lúc làm việc</h3><p>Gõ vào ô tìm kiếm: “D3”, “Herzberg”, “Prana”, “Check Trust”. Bản đồ sẽ mở thẳng tới mục đó.</p></div>
    <div class="card"><h3>Dùng để ra quyết định</h3><p>Tab Ứng dụng: mô tả một tình huống thật với một người cụ thể trong Light Team, nhận phân tích theo đúng khung của khoá.</p></div>
    <div class="card"><h3>Ghi nhớ lâu</h3><p>Xem nhánh Cầu nối xuyên buổi — học theo cặp khái niệm nối hai buổi sẽ nhớ lâu hơn học rời từng mục.</p></div>
-   <div class="card"><h3>Cập nhật Buổi 03 &amp; 04</h3><p>Hai nhánh đã dựng sẵn khung. Gửi tài liệu kèm ảnh chụp slide, nội dung sẽ được đổ vào đúng cấu trúc và tự nối vào tìm kiếm, hỏi đáp, ôn tập.</p></div>
+   <div class="card"><h3>Cập nhật Buổi 04</h3><p>Buổi 03 đã có đủ 29 mục. Nhánh Buổi 04 đã dựng sẵn khung — gửi tài liệu kèm ảnh chụp slide, nội dung sẽ được đổ vào đúng cấu trúc và tự nối vào tìm kiếm, hỏi đáp, ôn tập.</p></div>
   </div>
   <h2 class="lead" style="margin-top:30px;font-size:22px">Ba câu hỏi lõi của toàn khoá</h2>
   <div class="grid" style="margin-top:12px">
